@@ -1,0 +1,6 @@
+je@v:/etc/systemd/system$ sudo systemctl disable gdm
+[sudo] password for je: 
+Removed /etc/systemd/system/display-manager.service.
+je@v:/etc/systemd/system$ 
+
+
