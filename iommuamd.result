@@ -1,0 +1,85 @@
+[22;31mIOMMU group 7[0m
+	[22;34m00:1c.2 PCI bridge [0604]: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #3 [8086:8c14] (rev d5)[0m
+	[22;36m	Driver: pcieport[0m
+[22;31mIOMMU group 5[0m
+	[22;34m00:1b.0 Audio device [0403]: Intel Corporation 8 Series/C220 Series Chipset High Definition Audio Controller [8086:8c20] (rev 05)[0m
+	[22;36m	Driver: snd_hda_intel[0m
+[22;31mIOMMU group 3[0m
+	[22;34m00:16.0 Communication controller [0780]: Intel Corporation 8 Series/C220 Series Chipset Family MEI Controller #1 [8086:8c3a] (rev 04)[0m
+	[22;36m	Driver: mei_me[0m
+[22;31mIOMMU group 11[0m
+	[22;34m03:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller [10ec:8168] (rev 0c)[0m
+	[22;36m	Driver: r8169[0m
+[22;31mIOMMU group 1[0m
+	[22;34m00:01.0 PCI bridge [0604]: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor PCI Express x16 Controller [8086:0c01] (rev 06)[0m
+	[22;36m	Driver: pcieport[0m
+	[22;34m01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GM204 [GeForce GTX 970] [10de:13c2] (rev a1)[0m
+	[22;36m	Driver: nvidia[0m
+	[22;34m01:00.1 Audio device [0403]: NVIDIA Corporation GM204 High Definition Audio Controller [10de:0fbb] (rev a1)[0m
+	[22;36m	Driver: snd_hda_intel[0m
+[22;31mIOMMU group 8[0m
+	[22;34m00:1c.3 PCI bridge [0604]: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #4 [8086:8c16] (rev d5)[0m
+	[22;36m	Driver: pcieport[0m
+[22;31mIOMMU group 6[0m
+	[22;34m00:1c.0 PCI bridge [0604]: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #1 [8086:8c10] (rev d5)[0m
+	[22;36m	Driver: pcieport[0m
+[22;31mIOMMU group 4[0m
+	[22;34m00:1a.0 USB controller [0c03]: Intel Corporation 8 Series/C220 Series Chipset Family USB EHCI #2 [8086:8c2d] (rev 05)[0m
+	[22;36m	Driver: ehci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 001 Device 002: ID 8087:8008 Intel Corp. Integrated Rate Matching Hub[0m
+		[22;32m	Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub[0m
+[22;31mIOMMU group 12[0m
+	[22;34m04:00.0 PCI bridge [0604]: Intel Corporation 82801 PCI Bridge [8086:244e] (rev 41)[0m
+	[22;36m	Driver: none[0m
+[22;31mIOMMU group 2[0m
+	[22;34m00:14.0 USB controller [0c03]: Intel Corporation 8 Series/C220 Series Chipset Family USB xHCI [8086:8c31] (rev 05)[0m
+	[22;36m	Driver: xhci_hcd[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 003 Device 004: ID 1a81:1202 Holtek Semiconductor, Inc. wireless dongle[0m
+		[22;32m	Bus 003 Device 003: ID 046d:c08b Logitech, Inc. G502 SE HERO Gaming Mouse[0m
+		[22;32m	Bus 003 Device 002: ID 046d:0836 Logitech, Inc. B525 HD Webcam[0m
+		[22;32m	Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub[0m
+[22;31mIOMMU group 10[0m
+	[22;34m00:1f.0 ISA bridge [0601]: Intel Corporation B85 Express LPC Controller [8086:8c50] (rev 05)[0m
+	[22;36m	Driver: lpc_ich[0m
+	[22;34m00:1f.2 SATA controller [0106]: Intel Corporation 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode] [8086:8c02] (rev 05)[0m
+	[22;36m	Driver: ahci[0m
+		[22;36mBlock device:[0m
+		[22;32m	Model: Samsung SSD 850 [0m
+		[22;32m	sda    232.9G [0m
+		[22;32m	├─sda1   512M /boot/efi[0m
+		[22;32m	├─sda2     2G [SWAP][0m
+		[22;32m	├─sda3     2G [0m
+		[22;32m	└─sda4 228.4G [0m
+		[22;36mBlock device:[0m
+		[22;32m	Model: ST3500418AS     [0m
+		[22;32m	sdd    465.8G [0m
+		[22;32m	├─sdd1   512M [0m
+		[22;32m	├─sdd2     2G [0m
+		[22;32m	├─sdd3     2G [0m
+		[22;32m	└─sdd4 461.3G [0m
+		[22;36mBlock device:[0m
+		[22;32m	Model: Samsung SSD 860 [0m
+		[22;32m	sdb    931.5G [0m
+		[22;32m	├─sdb1    16M [0m
+		[22;32m	└─sdb2   931G [0m
+		[22;36mBlock device:[0m
+		[22;32m	Model: ST3000DM001-1ER1[0m
+		[22;32m	sdc     2.7T [0m
+		[22;32m	├─sdc1  128M [0m
+		[22;32m	├─sdc2  2.7T [0m
+		[22;32m	└─sdc3  450M [0m
+	[22;34m00:1f.3 SMBus [0c05]: Intel Corporation 8 Series/C220 Series Chipset Family SMBus Controller [8086:8c22] (rev 05)[0m
+	[22;36m	Driver: i801_smbus[0m
+[22;31mIOMMU group 0[0m
+	[22;34m00:00.0 Host bridge [0600]: Intel Corporation Xeon E3-1200 v3 Processor DRAM Controller [8086:0c08] (rev 06)[0m
+	[22;36m	Driver: none[0m
+[22;31mIOMMU group 9[0m
+	[22;34m00:1d.0 USB controller [0c03]: Intel Corporation 8 Series/C220 Series Chipset Family USB EHCI #1 [8086:8c26] (rev 05)[0m
+	[22;36m	Driver: ehci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 002 Device 002: ID 8087:8000 Intel Corp. Integrated Rate Matching Hub[0m
+		[22;32m	Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub[0m
