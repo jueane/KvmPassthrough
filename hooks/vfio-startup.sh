@@ -2,8 +2,8 @@ set -x
 
 systemctl stop gdm
 
-echo 0 > /etc/class/vtconsole/vtcon0/bind
-echo 0 > /etc/class/vtconsole/vtcon1/bind
+echo 0 > /sys/class/vtconsole/vtcon0/bind
+echo 0 > /sys/class/vtconsole/vtcon1/bind
 
 echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
 
@@ -25,3 +25,7 @@ modprobe vfio_pci
 modprobe vfio
 modprobe vfio_iommu_type1
 modprobe vfio_virqfd
+modprobe virtio_net
+modprobe virtio_blk
+modprobe virtio
+
