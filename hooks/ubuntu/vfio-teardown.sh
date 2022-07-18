@@ -1,6 +1,6 @@
 set -x
 
-sleep 3
+#sleep 1
 
 modprobe -r vfio_pci
 modprobe -r vfio
@@ -17,8 +17,6 @@ virsh nodedev-reattach pci_0000_01_00_1
 echo 1 > /sys/class/vtconsole/vtcon0/bind
 echo 1 > /sys/class/vtconsole/vtcon1/bind
 
-echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/bind
-
 modprobe nvidia
 modprobe nvidia_modeset
 modprobe nvidia_uvm
@@ -27,6 +25,11 @@ modprobe drm_kms_helper
 modprobe i2c_nvidia_gpu
 modprobe drm
 
-sleep 3
+echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/bind
+
+#sleep 1
 
 #systemctl start gdm
+
+#systemctl start getty@tty1
+
