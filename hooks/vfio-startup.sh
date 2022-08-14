@@ -1,14 +1,11 @@
 set -x
 
-#systemctl stop gdm
-#pkill xinit
-
 echo 0 > /sys/class/vtconsole/vtcon0/bind
 echo 0 > /sys/class/vtconsole/vtcon1/bind
 
 echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
 
-sleep 15
+#sleep 5
 
 modprobe -r nvidia_drm
 modprobe -r nvidia_uvm
@@ -21,6 +18,7 @@ modprobe -r drm
 virsh nodedev-detach pci_0000_00_01_0
 virsh nodedev-detach pci_0000_01_00_0
 virsh nodedev-detach pci_0000_01_00_1
+virsh nodedev-detach pci_0000_00_14_0
 
 modprobe vfio_pci
 modprobe vfio
