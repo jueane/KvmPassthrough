@@ -1,18 +1,20 @@
 #!/bin/bash
 
-OBJECT="$1"
-OPERATION="$2"
+guest_name="$1"
+libvirt_task="$2"
 
-if [[ $OBJECT == "win11" || $OBJECT == "win10" || $OBJECT == "win10-backup" ]] ; then
-	case "$OPERATION" in
+if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "win10-backup" ]] ; then
+	case "$libvirt_task" in
         	"prepare")
-                /usr/bin/auto_backup_$OBJECT.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                # systemctl start libvirt-nosleep@"$OBJECT"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+                /usr/bin/auto_backup_$guest_name.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+                systemctl start libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+                pkill -15 xinit 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+				sleep 3
                 # /bin/vfio-startup.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                 ;;
 
             "release")
-                # systemctl stop libvirt-nosleep@"$OBJECT"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+                systemctl stop libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                 # /bin/vfio-teardown.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                 ;;
 	esac
