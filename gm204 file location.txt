@@ -1,0 +1,2 @@
+arch:
+/usr/share/vgabios
