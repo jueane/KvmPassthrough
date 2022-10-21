@@ -3,19 +3,26 @@
 guest_name="$1"
 libvirt_task="$2"
 
-if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "docker_arch" || $guest_name == "vArch" ]] ; then
+if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "docker_arch" || $guest_name == "vArch" || $guest_name == "android" ]] ; then
 	case "$libvirt_task" in
         	"prepare")
                 /usr/bin/vm_zfs_snapshot.sh $guest_name 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                #systemctl start libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                pkill -15 xinit 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-				sleep 5
-                # /bin/vfio-startup.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+
+                # video card passthrough
+                if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" ]] ; then
+                    pkill -15 xinit 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+                    sleep 5
+
+                    #systemctl start libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+#                     /bin/vfio-startup.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+                fi
                 ;;
 
             "release")
-                #systemctl stop libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                # /bin/vfio-teardown.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+#                 if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" ]] ; then
+#                     #systemctl stop libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+#                     /bin/vfio-teardown.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+#                 fi
                 ;;
 	esac
 fi
