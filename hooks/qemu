@@ -6,11 +6,8 @@ libvirt_task="$2"
 if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" || $guest_name == "android" || $guest_name == "docker_arch" ]] ; then
 	case "$libvirt_task" in
         	"prepare")
-                if [[ $guest_name == "docker_arch" ]] ; then
-                    /usr/bin/vm_zfs_snapshot.sh largeData/vdisk/ $guest_name 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                else
-                    /usr/bin/vm_zfs_snapshot.sh jdata/vdisk/ $guest_name 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                fi
+
+                /usr/bin/vm_zfs_snapshot.sh jdata/vdisk/ $guest_name 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
 
                 # video card passthrough
                 if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" ]] ; then
