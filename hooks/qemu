@@ -21,8 +21,8 @@ if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu
 
             "release")
                 # if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" ]] ; then
-                # #     #systemctl stop libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                #     /bin/vfio-teardown.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+                #    systemctl stop libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+                #    /bin/vfio-teardown.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                 # fi
                 ;;
 	esac
