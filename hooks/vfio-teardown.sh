@@ -16,8 +16,8 @@ virsh nodedev-reattach pci_0000_01_00_1
 
 
 # Rebind VT consoles
-echo 1 > /etc/class/vtconsole/vtcon0/bind
-echo 1 > /etc/class/vtconsole/vtcon1/bind
+echo 1 > /sys/class/vtconsole/vtcon0/bind
+echo 1 > /sys/class/vtconsole/vtcon1/bind
 
 # Some machines might have more than 1 virtual console. Add a line for each corresponding VTConsole
 #echo 1 > /sys/class/vtconsole/vtcon1/bind
@@ -36,6 +36,6 @@ modprobe drm_kms_helper
 modprobe i2c_nvidia_gpu
 modprobe drm
 
-startx
+# startx
 # Restart Display Manager
 # systemctl start display-manager.service

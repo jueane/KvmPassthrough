@@ -14,14 +14,12 @@ if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu
                     pkill -15 xinit 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                     sleep 5
 
-                    #systemctl start libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                     # /bin/vfio-startup.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                 fi
                 ;;
 
             "release")
                 # if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" ]] ; then
-                #    systemctl stop libvirt-nosleep@"$guest_name"  2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                 #    /bin/vfio-teardown.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
                 # fi
                 ;;
