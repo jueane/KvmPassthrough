@@ -3,6 +3,8 @@
 guest_name="$1"
 libvirt_task="$2"
 
+enabled_video_processor=false
+
 gui_process_name="xinit"
 
 passthrough_vm_names=("win11" "win10" "ubuntu" "vArch")
@@ -25,7 +27,7 @@ containsElement $guest_name ${snapshot_vm_names[@]}
 function CloseGUI() {
     if pgrep -x $gui_process_name >/dev/null; then
         echo "$gui_process_name exist, killing it"
-        pkill -15 ${gui_process_name} #2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+        pkill -15 ${gui_process_name}
         # pkill -15 ${gui_process_name}
     fi
     flag=0
@@ -42,29 +44,32 @@ function CloseGUI() {
 }
 
 function OnPrepare() {
-    /jdata/develop/AutoSnapshot/data_snap.sh jdata/vdisk/ $guest_name #2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+    /jdata/develop/AutoSnapshot/data_snap.sh jdata/vdisk/ $guest_name
 
     if $need_passthrough; then
         CloseGUI
 
-        # /jdata/develop/repos/KvmPassthrough/hooks/vfio-startup.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+        # /jdata/develop/repos/KvmPassthrough/hooks/vfio-startup.sh
     fi
 }
 
 function OnRelease() {
     if $need_passthrough; then
-        /jdata/develop/repos/KvmPassthrough/hooks/vfio-teardown.sh #2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+        /jdata/develop/repos/KvmPassthrough/hooks/vfio-teardown.sh
     fi
 }
 
-case "$libvirt_task" in
-"prepare")
-    if $need_snapshot; then
-        OnPrepare 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-        # OnPrepare
-    fi
-    ;;
-"release")
-    # OnRelease
-    ;;
-esac
+function qemu_process() {
+    case "$libvirt_task" in
+    "prepare")
+        if $need_snapshot; then
+            OnPrepare
+        fi
+        ;;
+    "release")
+        # OnRelease
+        ;;
+    esac
+}
+
+qemu_process 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
