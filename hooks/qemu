@@ -3,25 +3,68 @@
 guest_name="$1"
 libvirt_task="$2"
 
-if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" || $guest_name == "android" || $guest_name == "docker_arch" ]] ; then
-	case "$libvirt_task" in
-        	"prepare")
+gui_process_name="xinit"
 
-                /usr/bin/data_snap.sh jdata/vdisk/ $guest_name 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+passthrough_vm_names=("win11" "win10" "ubuntu" "vArch")
+snapshot_vm_names=("win11" "win10" "ubuntu" "vArch" "android" "docker_arch")
 
-                # video card passthrough
-                if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" ]] ; then
-                    pkill -15 xinit 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                    sleep 5
+function containsElement() {
+    local e
+    for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 1; done
+    return 0
+}
 
-                    # /bin/vfio-startup.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                fi
-                ;;
+need_passthrough=false
+containsElement $guest_name ${passthrough_vm_names[@]}
+[ $? = 1 ] && need_passthrough=true
 
-            "release")
-                # if [[ $guest_name == "win11" || $guest_name == "win10" || $guest_name == "ubuntu" || $guest_name == "vArch" ]] ; then
-                #    /bin/vfio-teardown.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
-                # fi
-                ;;
-	esac
-fi
+need_snapshot=false
+containsElement $guest_name ${snapshot_vm_names[@]}
+[ $? = 1 ] && need_snapshot=true
+
+function CloseGUI() {
+    if pgrep -x $gui_process_name >/dev/null; then
+        echo "$gui_process_name exist, killing it"
+        pkill -15 ${gui_process_name} #2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+        # pkill -15 ${gui_process_name}
+    fi
+    flag=0
+    while [ $flag -eq 0 ]; do
+        sleep 1
+        if pgrep -x $gui_process_name >/dev/null; then
+            echo "waiting ${gui_process_name} terminate"
+        else
+            flag=1
+        fi
+    done
+    sleep 2
+    echo "${gui_process_name} terminated"
+}
+
+function OnPrepare() {
+    /jdata/develop/AutoSnapshot/data_snap.sh jdata/vdisk/ $guest_name #2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+
+    if $need_passthrough; then
+        CloseGUI
+
+        # /jdata/develop/repos/KvmPassthrough/hooks/vfio-startup.sh 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+    fi
+}
+
+function OnRelease() {
+    if $need_passthrough; then
+        /jdata/develop/repos/KvmPassthrough/hooks/vfio-teardown.sh #2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+    fi
+}
+
+case "$libvirt_task" in
+"prepare")
+    if $need_snapshot; then
+        OnPrepare 2>&1 | tee -a /var/log/libvirt/custom_hooks.log
+        # OnPrepare
+    fi
+    ;;
+"release")
+    # OnRelease
+    ;;
+esac
