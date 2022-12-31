@@ -8,7 +8,6 @@ enabled_video_processor=false
 gui_process_name="xinit"
 
 passthrough_vm_names=("win11" "win10" "ubuntu" "vArch")
-snapshot_vm_names=("win11" "win10" "ubuntu" "vArch" "android" "docker_arch")
 
 function containsElement() {
     local e
@@ -20,9 +19,9 @@ need_passthrough=false
 containsElement $guest_name ${passthrough_vm_names[@]}
 [ $? = 1 ] && need_passthrough=true
 
-need_snapshot=false
-containsElement $guest_name ${snapshot_vm_names[@]}
-[ $? = 1 ] && need_snapshot=true
+function OpenGUI() {
+    # startx
+}
 
 function CloseGUI() {
     exist=false
@@ -52,30 +51,28 @@ function CloseGUI() {
 }
 
 function OnPrepare() {
-    /jdata/develop/AutoSnapshot/zfs/data_snap.sh jdata/vdisk/ $guest_name
+    /jdata/develop/AutoSnapshot/zfs/data_snap.sh $guest_name
 
     if $need_passthrough; then
         CloseGUI
-
         # /jdata/develop/repos/KvmPassthrough/hooks/vfio-startup.sh
     fi
 }
 
 function OnRelease() {
     if $need_passthrough; then
-        /jdata/develop/repos/KvmPassthrough/hooks/vfio-teardown.sh
+        # /jdata/develop/repos/KvmPassthrough/hooks/vfio-teardown.sh
+        OpenGUI
     fi
 }
 
 function qemu_process() {
     case "$libvirt_task" in
     "prepare")
-        if $need_snapshot; then
-            OnPrepare
-        fi
+        OnPrepare
         ;;
     "release")
-        # OnRelease
+        OnRelease
         ;;
     esac
 }
