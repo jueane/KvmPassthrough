@@ -20,10 +20,13 @@ containsElement $guest_name ${passthrough_vm_names[@]}
 [ $? = 1 ] && need_passthrough=true
 
 function OpenGUI() {
+    echo "OpenGUI"
     # startx
 }
 
 function CloseGUI() {
+    echo "CloseGUI"
+
     exist=false
 
     if pgrep -x $gui_process_name >/dev/null; then
@@ -67,6 +70,9 @@ function OnRelease() {
 }
 
 function qemu_process() {
+    nowtime=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "${nowtime} ${guest_name} ${libvirt_task}"
+
     case "$libvirt_task" in
     "prepare")
         OnPrepare
