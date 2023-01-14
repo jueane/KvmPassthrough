@@ -1,0 +1,2 @@
+aplay -L | grep :CARD
+
