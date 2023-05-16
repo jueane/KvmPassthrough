@@ -7,7 +7,7 @@ enabled_video_processor=false
 
 gui_process_name="xinit"
 
-passthrough_vm_names=("win11" "win10" "ubuntu" "vArch")
+passthrough_vm_names=("win11" "win10" "ubuntu" "manjaro" "win7")
 
 function containsElement() {
     local e
@@ -21,7 +21,7 @@ containsElement $guest_name ${passthrough_vm_names[@]}
 
 function OpenGUI() {
     echo "OpenGUI"
-    # startx
+#     startx
 }
 
 function CloseGUI() {
@@ -54,17 +54,17 @@ function CloseGUI() {
 }
 
 function OnPrepare() {
-    /jdata/develop/AutoSnapshot/zfs/data_snap.sh $guest_name
+    /jdata/develop/AutoSnapshot/zfs/data_snap.py $guest_name
 
     if $need_passthrough; then
         CloseGUI
-        # /jdata/develop/repos/KvmPassthrough/hooks/vfio-startup.sh
+#         /jdata/develop/KvmPassthrough/2.hooks/vfio-startup.sh
     fi
 }
 
 function OnRelease() {
     if $need_passthrough; then
-        # /jdata/develop/repos/KvmPassthrough/hooks/vfio-teardown.sh
+#         /jdata/develop/KvmPassthrough/2.hooks/vfio-teardown.sh
         OpenGUI
     fi
 }
