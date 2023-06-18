@@ -2,7 +2,6 @@
 import os
 import sys
 import time
-import psutil
 from datetime import datetime
 
 guest_name = sys.argv[1]
