@@ -1,0 +1,500 @@
+   18  lsmod | grep vfio
+   19  lsmod | grep vfio
+   20  virsh start win10
+   21  virsh shutdown win10
+   22  cd /mnt
+   23  ll
+   24  lsblk
+   25  mount /dev/nvme0n1p3 /mnt
+   26  ll
+   27  cd ..
+   28  cd /mnt
+   29  ll
+   30  btrfs subvolume list .
+   31  btrfs subvolume snapshot -r arch/ snapshots/arch_init_230825_3_pt_ok
+   32  cd
+   33  virsh start win10
+   34  pacman zfs-linux-lts
+   35  pacman -S zfs-linux-lts
+   36  pacman -Ss zfs
+   37  vim /etc/pacman.conf 
+   38  pacman -Sy
+   39  pacman -Sy
+   40  pacman -Syu
+   41  yay -S zfs-linux-lts
+   42  yay -Ss zfs-linux-lts
+   43  pacman -S archzfs/zfs-linux-lts
+   44  wget  https://archzfs.com/archzfs.gpg
+   45  pacman-key -a archzfs.gpg
+   46  pacman -S archzfs/zfs-linux-lts
+   47  pacman -Sy
+   48  pacman-key -d DDF7DB817396A49B2A2723F7403BD972F75D9D76
+   49  pacman-key -r DDF7DB817396A49B2A2723F7403BD972F75D9D76
+   50  pacman -S archzfs/zfs-linux-lts
+   51  pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
+   52  pacman -S archzfs/zfs-linux-lts
+   53  zpool status
+   54  modprobe zfs
+   55  zpool status
+   56  lsblk -f
+   57  zpool create -f -m /jdata jdata nvme-KINGSTON_SNV2S1000G_50026B7381D024C4
+   58  zpool status
+   59  zfs list
+   60  cd /jdata/
+   61  ll
+   62  zfs set compression=lz4 jdata
+   63  zfs get compression 
+   64  zfs create 
+   65  zfs create jdata/vdisk
+   66  zfs create jdata/vdisk/win10
+   67  cd /jdata/vdisk/win10
+   68  ll
+   69  virsh edit win10
+   70  cp /home/je/qemu/vdisk/win10.img .
+   71  ll
+   72  pwd
+   73  zfs snapshot jdata/vdisk/win10@230825
+   74  zfs list
+   75  zfs list -t snapshot jdata/vdisk/win10
+   76  zfs list
+   77  cat /etc/zfs/zpool.cache 
+   78  cat /etc/zfs/zpool.cache 
+   79  zpool get cachefile 
+   80  zpool set cachefile=/etc/zfs/zpool.cache jdata
+   81  zpool get cachefile 
+   82  systemctl status zfs-import-cache.service
+   83  systemctl enable zfs-import-cache.service
+   84  systemctl enable zfs-import.target
+   85  systemctl enable zfs-mount.service
+   86  systemctl enable zfs.target
+   87  lsblk -f
+   88  zfs list 
+   89  virsh list
+   90  reboot now
+   91  lsblk -f
+   92  lsblk
+   93  fidsk -l
+   94  fdisk -l
+   95  ls /dev/disk/by-id/
+   96  ll
+   97  cd /dev/disk/by-id
+   98  ll
+   99  zfs list
+  100  virsh edit win10
+  101  cd /dev/disk/by-id/
+  102  ll
+  103  virsh edit win10
+  104  virsh edit win10
+  105  virsh edit win10
+  106  virsh edit win10
+  107  virsh edit win10
+  108  virsh 
+  109  virsh list
+  110  virsh edit win10
+  111  cp /etc/libvirt/qemu/win10.xml /root/
+  112  cd
+  113  virsh start win10
+  114  cd /largeData/vdisk/windataB/
+  115  ll
+  116  virsh start win10
+  117  virsh start win10
+  118  df -h
+  119  zfs list
+  120  cd /jdata/
+  121  ls
+  122  virsh edit win10
+  123  mount /dev/nvme0n1p3 /mnt
+  124  cd /mnt
+  125  ll
+  126  btrfs subvolume list .
+  127  btrfs subvolume snapshot -r arch snapshots/arch_init_230825_3_zfs_ok
+  128  history 
+  129  cd
+  130  ll
+  131  cd develop/
+  132  ll
+  133  cd new
+  134  ls
+  135  history > command_history.txt
+  136  ll
+  137  vim command_history.txt 
+  138  git status
+  139  git config --global --add safe.directory *
+  140  git config --global --add safe.directory "*"
+  141  git status
+  142  virsh start win10
+  143  virsh list
+  144  virsh destroy win10 
+  145  zfs list
+  146  zfs list -t snapshot jdata/vdisk/win10
+  147  zfs rollback jdata/vdisk/win10@230825
+  148  virsh start win10
+  149  zfs snapshot jdata/vdisk/win10@230825_2
+  150  zfs list -t snapshot jdata/vdisk/win10
+  151  virsh edit win10
+  152  virsh list
+  153  virsh list
+  154  virsh edit win10
+  155  virsh edit win10
+  156  virsh start win10
+  157  virsh edit win10
+  158  virsh start win10
+  159  virsh list
+  160  virsh list
+  161  virsh list
+  162  virsh list
+  163  zfs list
+  164  zfs list -t snapshot jdata/vdisk/win10
+  165  zfs snapshot jdata/vdisk/win10@230825_3
+  166  zfs list -t snapshot jdata/vdisk/win10
+  167  virsh start win10
+  168  zfs list
+  169  zfs list -t snapshot jdata/vdisk/win10
+  170  zfs snapshot jdata/vdisk/win10@230825_4_hyperV_ok
+  171  zfs list -t snapshot jdata/vdisk/win10
+  172  zfs list
+  173  virsh start win10
+  174  lsblk -f
+  175  zfs list
+  176  zfs create jdata/vdisk/windataA
+  177  cd /jdata/vdisk/windataA/
+  178  ll
+  179  qemu-img create -f raw winDiskD.img +512G
+  180  lsblk -f
+  181  fdisk -l
+  182  zpool create -f -m /largeData largeData ata-ST1000DM003-1SB10C_S9A05DWA
+  183  zfs list
+  184  zfs create largeData/vdisk/
+  185  zfs create largeData/vdisk
+  186  zfs create largeData/vdisk/windataLarge
+  187  zfs rename largeData/vdisk/windataLarge largeData/vdisk/windataB
+  188  zfs list
+  189  cd /largeData/vdisk/windataB/
+  190  qemu-img create -f raw windataLarge.img +512G
+  191  zfs list -t snapshot jdata/vdisk/win10
+  192  zfs snapshot jdata/vdisk/win10@230825_5
+  193  zfs list -t snapshot jdata/vdisk/win10
+  194  htop
+  195  lscpu -e
+  196  history 
+  197  zfs snapshot jdata/vdisk/win10@230825_6
+  198  zfs snapshot jdata/vdisk/win10@230825_7
+  199  qemu-img info windataLarge.img 
+  200  qemu-img --help
+  201  qemu-img create -f raw windataLarge2.img +700G
+  202  ll
+  203  mv windataLarge.img windataLarge.img_bk
+  204  mv windataLarge2.img windataLarge.img
+  205  ll
+  206  virsh start win10
+  207  virsh edit win10
+  208  ll
+  209  ll
+  210  lsblk
+  211  df -h
+  212  zfs list
+  213  ll
+  214  qemu-img info windataLarge.img
+  215  qemu-img info windataLarge.img_bk
+  216  zfs list
+  217  htop
+  218  htop
+  219  virsh list
+  220  virsh list
+  221  zfs lsit
+  222  zfs list
+  223  zfs list -t snapshot jdata/vdisk/win10 
+  224  zfs snapshot jdata/vdisk/win10@230826
+  225  zfs list -t snapshot jdata/vdisk/win10 
+  226  virsh start win10
+  227  ping 192.168.20.2
+  228  ping 192.168.20.75
+  229  htop
+  230  htop
+  231  ll
+  232  ls
+  233  virsh list
+  234  virsh shutdown win10 
+  235  virsh list
+  236  virsh list
+  237  virsh list
+  238  virsh list
+  239  virsh list
+  240  zfs list
+  241  zfs list -t snapshot largeData/vdisk/windataB
+  242  zfs list -t snapshot jdata/vdisk/win10
+  243  zfs snapshot jdata/vdisk/win10@230827
+  244  zfs list -t snapshot jdata/vdisk/win10
+  245  virsh start win10
+  246  htop
+  247  vim /etc/default/grub 
+  248  grub-mkconfig -o /boot/grub/grub.cfg 
+  249  virsh edit win10
+  250  reboot now
+  251  zfs list
+  252  virsh list 
+  253  virsh destroy win10
+  254  virsh start win10
+  255  virsh list 
+  256  zfs list
+  257  cd /largeData/vdisk/windataB/
+  258  ll
+  259  rm windataLarge.img_bk 
+  260  ll
+  261  qemu-img resize -f raw windataLarge.img +300G
+  262  qemu-img info windataLarge.img 
+  263  ll
+  264  virsh lsit
+  265  virsh list
+  266  virsh start win10
+  267  virsh list
+  268  zfs list
+  269  virsh list
+  270  ping 192.168.20.75
+  271  zfs list
+  272  zfs destroy win10
+  273  zfs list
+  274  virsh list
+  275  virsh destroy win10 
+  276  zfs list -t snapshot jdata/vdisk/win10
+  277  zfs rollback jdata/vdisk/win10@230827
+  278  virsh list
+  279  virsh start win10
+  280  ping 192.168.20.75
+  281  ping 192.168.20.75
+  282  zpool list
+  283  virsh destroy win10 
+  284  ping 192.168.20.75
+  285  zfs list
+  286  virsh destroy win10 
+  287  zfs rollback jdata/vdisk/win10@230827
+  288  virsh edit win10
+  289  virsh edit win10
+  290  virsh start win10
+  291  virsh destroy win10 
+  292  zfs rollback jdata/vdisk/win10@230827
+  293  virsh start win10
+  294  zfs snapshot jdata/vdisk/win10@230827_2
+  295  virsh list
+  296  zfs destroy jdata/vdisk/win10@230827_2
+  297  zfs snapshot jdata/vdisk/win10@230827_2
+  298  virsh list
+  299  lsblk 
+  300  mount /dev/nvme0n1p3 /mnt
+  301  cd /mnt
+  302  btrfs subvolume list .
+  303  btrfs subvolume snapshot -r arch snapshots/arch_init_230827
+  304  htop
+  305  virsh start win10
+  306  zfs list
+  307  zfs list
+  308  zfs list -t snapshot jdata/vdisk/win10
+  309  zfs rollback jdata/vdisk/win10@230827
+  310  zfs rollback jdata/vdisk/win10@230827
+  311  history 
+  312  virsh list
+  313  zfs list -t snapshot jdata/vdisk/win10
+  314  virsh start win10
+  315  virsh edit win10
+  316  lsblk -f
+  317  fdisk -l
+  318  vim /etc/fstab 
+  319  fdisk -l
+  320  cd /dev/disk/by-uuid/
+  321  ll
+  322  virsh list
+  323  zfs list
+  324  zfs list -t snapshot jdata/vdisk/win10
+  325  zfs snapshot jdata/vdisk/win10@230828
+  326  poweroff now
+  327  poweroff now
+  328  poweroff
+  329  vim /etc/fstab 
+  330  swapoff /dev/nvme0n1p2
+  331  mount /dev/sdb3 /mnt
+  332  ls /mnt
+  333  mount -o subvol=arch /dev/sdb3 /mnt
+  334  mount -o subvol=/arch /dev/sdb3 /mnt
+  335  ls /mnt
+  336  df -h
+  337  mount -o subvol=/arch /dev/sdb3 /mnt
+  338  blkid | grep /dev/sdb1
+  339  grub-install /dev/sdb
+  340  lsblk -f
+  341  fdisk -l
+  342  lsblk -f
+  343  reboot now
+  344  lsblk -f
+  345  mount -o subvol=/arch /dev/sdb3 /mnt
+  346  mount -o subvol=arch /dev/sdb3 /mnt
+  347  mount -o subvol=arch /dev/sdb3 /mnt
+  348  ls /mnt
+  349  mount -o subvol=/arch /dev/sdb3 /mnt
+  350  mount -o subvol=/arch /dev/nvme0n1p3 /mnt
+  351  ls /mnt
+  352  fdisk -l
+  353  reboot now
+  354  virsh start win10
+  355  ls
+  356  mkdir /11
+  357  mount -o subvol=/arch /dev/sdb3 /11
+  358  rmdir /11
+  359  ll
+  360  zfs list
+  361  zfs list
+  362  zfs list
+  363  zfs list -t snapshot jdata/vdisk/win10
+  364  zfs snapshot jdata/vdisk/win10@230828_apex_ok
+  365  zfs list -t snapshot jdata/vdisk/win10
+  366  virsh list
+  367  zfs destroy jdata/vdisk/win10@230828_apex_ok
+  368  zfs snapshot jdata/vdisk/win10@230828_apex_ok
+  369  zfs list -t snapshot jdata/vdisk/win10
+  370  virsh start win10
+  371  virsh list
+  372  reboot now
+  373  htop
+  374  virsh start win10
+  375  virsh start win10
+  376  poweroff
+  377  ip addr
+  378  virsh lsit
+  379  virsh list
+  380  zfs list
+  381  zfs list -t snapshot jdata/vdisk/win10
+  382  btrfs subvolume list /
+  383  zfs list
+  384  zfs list -t snapshot jdata/vdisk/win10
+  385  ll
+  386  cd develop/
+  387  ll
+  388  cd 3.modprobe/
+  389  ll
+  390  cat kvm.conf 
+  391  cat vfio02.conf 
+  392  cat /etc/modprobe.d/vfio.conf 
+  393  ll
+  394  cd ..
+  395  ll
+  396  git remote -vv
+  397  cd /etc/systemd/network/
+  398  ll
+  399  vim 30-br0-static.network 
+  400  cd /etc/systemd/network/
+  401  ll
+  402  vim 30-br0-static.network 
+  403  systemctl restart systemd-networkd
+  404  cat /proc/meminfo 
+  405  dmidecode -t memory
+  406  sudo dmidecode -t memory | grep "Number Of Devices"
+  407  lshw -short -C memory
+  408  dmidecode -t memory | grep G
+  409  dmidecode -t memory | Size
+  410  dmidecode -t memory | grep Size
+  411  pacman -S lshw
+  412  lshw -short -C memory
+  413  lshw -short -C memory
+  414  lshw -short -C memory
+  415  dmidecode -t memory | grep "Number Of Devices"
+  416  virsh start win10
+  417  poweroff
+  418  htop
+  419  vim /etc/default/grub 
+  420  grub-mkconfig -o /boot/grub/grub.cfg 
+  421  reboot now
+  422  virsh edit win10
+  423  virsh start win10
+  424  poweroff
+  425  virsh list
+  426  poweroff
+  427  virsh start win10
+  428  zfs list
+  429  zfs list -t snapshot jdata/vdisk/win10
+  430  zfs snapshot jdata/vdisk/win10@230829
+  431  poweroff
+  432  htop
+  433  vim /etc/default/grub 
+  434  htop
+  435  vim /etc/default/grub 
+  436  grub-mkconfig -o /boot/grub/grub.cfg 
+  437  reboot now
+  438  htop
+  439  wg
+  440  htop
+  441  pacman -S tldr
+  442  tldr wg
+  443  ll
+  444  cd /jdata/
+  445  ll
+  446  cd
+  447  mkdir apps
+  448  cd apps/
+  449  mkdir wireguard
+  450  cd wireguard/
+  451  ll
+  452  tldr wg
+  453  wg genkey | tee private_key | wg pubkey > public_key
+  454  ll
+  455  rm -rf *
+  456  ll
+  457  pacman -S wireguard-tools 
+  458  wg genkey | tee private_key | wg pubkey > public_key
+  459  ll
+  460  cat public_key 
+  461  cat private_key 
+  462  cd /etc/wireguard/
+  463  ll
+  464  vim /root/apps/wireguard/wg0.conf
+  465  ll
+  466  ln -s /root/apps/wireguard/wg0.conf .
+  467  ll
+  468  wg
+  469  wg-quick up wg0
+  470  wg
+  471  wg
+  472  ip addr
+  473  vim wg0.conf 
+  474  wg-quick up wg0
+  475  ip addr
+  476  ip route
+  477  vim wg0.conf 
+  478  wg-quick up wg0
+  479  wg
+  480  wg
+  481  ping 10.0.0.2
+  482  vim wg0.conf 
+  483  wg-quick down wg0
+  484  wg-quick up wg0
+  485  ping 10.0.0.2
+  486  systemctl status wg-quick.target 
+  487  cd /etc/systemd/system/
+  488  ll
+  489  ll
+  490  pwd
+  491  systemctl enable wg-quick@wg0
+  492  df -h
+  493  mount /dev/nvme0n1p3 /mnt
+  494  cd /mnt
+  495  ll
+  496  btrfs subvolume list .
+  497  btrfs subvolume snapshot -r arch snapshots/arch_init_230830
+  498  cd
+  499  umount /mnt
+  500  ls
+  501  cd /etc/systemd/network/
+  502  ll
+  503  cat 30-br0-static.network 
+  504  pacman -Qs complete
+  505  pacman -Qs bash-
+  506  ping 192.168.20.2
+  507  cd
+  508  cat .inputrc 
+  509  vim .bashrc 
+  510  cat .bashrc 
+  511  cat .bash_profile 
+  512  ll
+  513  cd /jdata/
+  514  ll
+  515  ll
+  516  pwd
+  517  history > cmd.history.txt

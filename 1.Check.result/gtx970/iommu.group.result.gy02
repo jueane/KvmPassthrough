@@ -1,0 +1,61 @@
+IOMMU group 7
+        00:1d.0 PCI bridge [0604]: Intel Corporation Comet Lake PCI Express Root Port 9 [8086:a398] (rev f0)
+                Driver: pcieport
+        07:00.0 Non-Volatile memory controller [0108]: Kingston Technology Company, Inc. Device [2646:5017] (rev 03)
+                Driver: nvme
+IOMMU group 5
+        00:1b.0 PCI bridge [0604]: Intel Corporation Device [8086:a3e9] (rev f0)
+                Driver: pcieport
+        00:1b.4 PCI bridge [0604]: Intel Corporation Comet Lake PCI Express Root Port #21 [8086:a3eb] (rev f0)
+                Driver: pcieport
+        02:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller [10ec:8168] (rev 06)
+                Driver: r8169
+        03:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
+                Driver: nvme
+IOMMU group 3
+        00:16.0 Communication controller [0780]: Intel Corporation Comet Lake PCH-V HECI Controller [8086:a3ba]
+                Driver: mei_me
+IOMMU group 1
+        00:01.0 PCI bridge [0604]: Intel Corporation 6th-10th Gen Core Processor PCIe Controller (x16) [8086:1901] (rev 05)
+                Driver: pcieport
+        01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [GeForce RTX 3060] [10de:2503] (rev a1)
+                Driver: nouveau
+        01:00.1 Audio device [0403]: NVIDIA Corporation GA106 High Definition Audio Controller [10de:228e] (rev a1)
+                Driver: snd_hda_intel
+IOMMU group 8
+        00:1f.0 ISA bridge [0601]: Intel Corporation B460 Chipset LPC/eSPI Controller [8086:a3c8]
+                Driver: none
+        00:1f.2 Memory controller [0580]: Intel Corporation Cannon Lake PCH Power Management Controller [8086:a3a1]
+                Driver: none
+        00:1f.3 Audio device [0403]: Intel Corporation Comet Lake PCH-V cAVS [8086:a3f0]
+                Driver: snd_hda_intel
+        00:1f.4 SMBus [0c05]: Intel Corporation Comet Lake PCH-V SMBus Host Controller [8086:a3a3]
+                Driver: i801_smbus
+IOMMU group 6
+        00:1c.0 PCI bridge [0604]: Intel Corporation Device [8086:a392] (rev f0)
+                Driver: pcieport
+        00:1c.3 PCI bridge [0604]: Intel Corporation Device [8086:a393] (rev f0)
+                Driver: pcieport
+        04:00.0 PCI bridge [0604]: ASMedia Technology Inc. ASM1083/1085 PCIe to PCI Bridge [1b21:1080] (rev 04)
+                Driver: none
+        06:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller [10ec:8168] (rev 15)
+                Driver: r8169
+IOMMU group 4
+        00:17.0 SATA controller [0106]: Intel Corporation 400 Series Chipset Family SATA AHCI Controller [8086:a382]
+                Driver: ahci
+                Block device:
+                        Model: ST1000DM003-1SB1
+                        sda    931.5G
+                        └─sda1 931.5G
+                Block device:
+                        Model: ST500DM002-1BD14
+                        sdb    465.8G
+                        └─sdb1 465.8G
+IOMMU group 2
+        00:14.0 USB controller [0c03]: Intel Corporation Comet Lake PCH-V USB Controller [8086:a3af]
+                Driver: xhci_hcd
+                Usb bus:
+                Usb bus:
+IOMMU group 0
+        00:00.0 Host bridge [0600]: Intel Corporation 10th Gen Core Processor Host Bridge/DRAM Registers [8086:9b43] (rev 05)
+                Driver: skl_uncore

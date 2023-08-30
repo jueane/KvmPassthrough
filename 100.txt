@@ -1,4 +1,0 @@
-1.qemu-kvm配置了虚拟桥接网卡后，再安装docker，会导致虚拟网桥无效。解决方法：
-iptables -I FORWARD -i br0 -o br0 -j ACCEPT
-
-
