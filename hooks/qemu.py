@@ -59,10 +59,12 @@ def close_gui():
 
 
 def on_prepare():
-    os.system('/jdata/develop/AutoSnapshot/zfs/data_snap.py ' + guest_name)
+    cmd = f'/jdata/develop/AutoSnapshot/zfs/data_snap.py ' + guest_name
+    print(cmd)
+    os.system(cmd)
     if need_passthrough:
         pass
-        close_gui()
+        # close_gui()
 
 
 def on_release():
@@ -73,9 +75,9 @@ def on_release():
 def qemu_process():
     print(f'{datetime.now()}: {guest_name} {libvirt_task}, passthrough:{need_passthrough}')
 
-    if libvirt_task == 'prepare':
+    if libvirt_task.__contains__('prepare'):
         on_prepare()
-    elif libvirt_task == 'release':
+    elif libvirt_task.__contains__('release'):
         on_release()
 
 
