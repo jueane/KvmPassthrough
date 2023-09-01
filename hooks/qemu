@@ -6,5 +6,13 @@ libvirt_task="$2"
 # 获取脚本所在的目录
 script_dir=$(dirname "$(readlink -f "$BASH_SOURCE")")
 
+# 获取当前日期和时间
+current_date=$(date '+%Y-%m-%d %H:%M:%S')
+
 cd "$script_dir"
-./qemu.py "$guest_name" "$libvirt_task"# >> /var/log/libvirt/hooks.log 2>&1
+command="./qemu.py \"$guest_name\" \"$libvirt_task\""
+echo "======== Start of Command Output ========" >> /var/log/libvirt/hooks.log
+echo "Date: $current_date" >> /var/log/libvirt/hooks.log
+echo "Command: $command" >> /var/log/libvirt/hooks.log
+eval "$command" >> /var/log/libvirt/hooks.log 2>&1 # 将输出写入日志文件
+echo "======== End of Command Output ========" >> /var/log/libvirt/hooks.log
