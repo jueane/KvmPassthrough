@@ -1,0 +1,5 @@
+zpool set cachefile=/etc/zfs/zpool.cache jdata
+systemctl enable zfs-import-cache.service
+systemctl enable zfs-import.target
+systemctl enable zfs-mount.service
+systemctl enable zfs.target

@@ -1,0 +1,13 @@
+
+（可能需要导入密钥）
+  pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
+
+安装zfs
+  pacman -S archzfs/zfs-linux-lts
+
+创建池
+zpool create <pool_name> <disk_id>
+
+
+example:
+  zpool create -f -m /jdata jdata nvme-KINGSTON_SNV2S1000G_50026B7381D024C4

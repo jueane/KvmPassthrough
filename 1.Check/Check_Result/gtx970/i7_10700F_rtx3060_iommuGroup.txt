@@ -1,0 +1,21 @@
+IOMMU Group 0 00:00.0 Host bridge [0600]: Intel Corporation 10th Gen Core Processor Host Bridge/DRAM Registers [8086:9b43] (rev 05)
+IOMMU Group 1 00:01.0 PCI bridge [0604]: Intel Corporation 6th-10th Gen Core Processor PCIe Controller (x16) [8086:1901] (rev 05)
+IOMMU Group 1 01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106 [GeForce RTX 3060] [10de:2503] (rev a1)
+IOMMU Group 1 01:00.1 Audio device [0403]: NVIDIA Corporation GA106 High Definition Audio Controller [10de:228e] (rev a1)
+IOMMU Group 2 00:14.0 USB controller [0c03]: Intel Corporation Comet Lake PCH-V USB Controller [8086:a3af]
+IOMMU Group 3 00:16.0 Communication controller [0780]: Intel Corporation Comet Lake PCH-V HECI Controller [8086:a3ba]
+IOMMU Group 4 00:17.0 SATA controller [0106]: Intel Corporation 400 Series Chipset Family SATA AHCI Controller [8086:a382]
+IOMMU Group 5 00:1b.0 PCI bridge [0604]: Intel Corporation Device [8086:a3e9] (rev f0)
+IOMMU Group 5 00:1b.4 PCI bridge [0604]: Intel Corporation Comet Lake PCI Express Root Port #21 [8086:a3eb] (rev f0)
+IOMMU Group 5 02:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller [10ec:8168] (rev 06)
+IOMMU Group 5 03:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
+IOMMU Group 6 00:1c.0 PCI bridge [0604]: Intel Corporation Device [8086:a392] (rev f0)
+IOMMU Group 6 00:1c.3 PCI bridge [0604]: Intel Corporation Device [8086:a393] (rev f0)
+IOMMU Group 6 04:00.0 PCI bridge [0604]: ASMedia Technology Inc. ASM1083/1085 PCIe to PCI Bridge [1b21:1080] (rev 04)
+IOMMU Group 6 06:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller [10ec:8168] (rev 15)
+IOMMU Group 7 00:1d.0 PCI bridge [0604]: Intel Corporation Comet Lake PCI Express Root Port 9 [8086:a398] (rev f0)
+IOMMU Group 7 07:00.0 Non-Volatile memory controller [0108]: Kingston Technology Company, Inc. Device [2646:5017] (rev 03)
+IOMMU Group 8 00:1f.0 ISA bridge [0601]: Intel Corporation B460 Chipset LPC/eSPI Controller [8086:a3c8]
+IOMMU Group 8 00:1f.2 Memory controller [0580]: Intel Corporation Cannon Lake PCH Power Management Controller [8086:a3a1]
+IOMMU Group 8 00:1f.3 Audio device [0403]: Intel Corporation Comet Lake PCH-V cAVS [8086:a3f0]
+IOMMU Group 8 00:1f.4 SMBus [0c05]: Intel Corporation Comet Lake PCH-V SMBus Host Controller [8086:a3a3]

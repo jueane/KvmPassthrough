@@ -1,5 +1,0 @@
-sudo lspci -vs 01:00.1 | grep 'MSI'
-
-sudo lspci -vs 01:00.1 | grep 'MSI'
-
-
