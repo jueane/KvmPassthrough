@@ -1,0 +1,4 @@
+自动快照等配置勾子命令：
+ln -s -f /jdata/develop/KvmPassthrough/10.hooks/qemu /etc/libvirt/hooks/qemu
+
+(/etc/libvirt/hooks/qemu为固定脚本文件名，不能有后缀名)
