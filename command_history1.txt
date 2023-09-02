@@ -1,0 +1,500 @@
+   19  ls
+   20  ip addr
+   21  lsblk -f
+   22  mount /dev/nvme0n1p3 /mnt
+   23  cd /mnt
+   24  ls
+   25  btrfs subvolume list .
+   26  btrfs subvolume snapshot arch snapshots/arch_init_230824_3
+   27  btrfs subvolume snapshot -r arch snapshots/arch_init_230824_3
+   28  /etc/X11/xinit/xinitrc
+   29  cat /etc/X11/xinit/xinitrc
+   30  cat /etc/X11/xinit/xinitrc
+   31  pacman -S xrdp 
+   32  yay
+   33  cd
+   34  ls
+   35  ls
+   36  mkdir iso
+   37  cd iso
+   38  ls
+   39  pacman -S git
+   40  pacman -S --needed git base-devel
+   41  mkdir apps
+   42  ll
+   43  cd apps
+   44  git clone https://aur.archlinux.org/yay.git
+   45  cd yay
+   46  makepkg -si
+   47  useradd je
+   48  passwd je
+   49  ls
+   50  pacman -S sudo
+   51  vim /etc/sudoers
+   52  usermod -d /home/je je
+   53  mkdir /home/je
+   54  reboot now
+   55  vim /etc/resolv.conf 
+   56  cat /etc/xrdp/sesman.ini
+   57  cat /etc/xrdp/startwm.sh
+   58  cat /etc/xrdp/startwm.sh
+   59  cat /etc/X11/Xwrapper.config
+   60  vim /etc/X11/Xwrapper.config
+   61  systemctl restart xrdp
+   62  systemctl status xrdp-sesman.service 
+   63  pacman -S pulseaudio
+   64  vim /etc/X11/Xwrapper.config
+   65  cd /home/je
+   66  ll
+   67  ll
+   68  lsblk -f 
+   69  mount /dev/nvme0n1p3 /mnt
+   70  cd /mnt
+   71  ll
+   72  btrfs subvolume list .
+   73  btrfs subvolume snapshot -r arch snapshots/arch_init_230824_4
+   74  btrfs subvolume list .
+   75  btrfs subvolume delete snapshots/arch_init_230824_3/arch
+   76  btrfs subvolume list .
+   77  ll
+   78  pacman -S ttf-roboto noto-fonts noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts ttf-dejavu
+   79  pacman -S wqy-zenhei
+   80  pacman -S ibus
+   81  pacman -S ibus-rime
+   82  cd .config
+   83  ls
+   84  cd ibus
+   85  reboot now
+   86  vim .ssh/authorized_keys 
+   87  pacman -Qs kwallet
+   88  kwalletmanager5 
+   89  cd
+   90  vim .inputrc
+   91  ls
+   92  cat .ssh/id_rsa.pub 
+   93  ls
+   94  cd
+   95  vim /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
+   96  cd /etc/polkit-1/localauthority/50-local.d/
+   97  cd /etc/polkit-1/localauthority/
+   98  cd /etc/polkit-
+   99  cd /etc/polkit-1/
+  100  ll
+  101  history 
+  102  mkdir localauthority
+  103  cd localauthority/
+  104  mkdir 50-local.d
+  105  cd 50-local.d/
+  106  vim 45-allow-colord.pkla
+  107  cd /mnt
+  108  ls
+  109  lsblk -f
+  110  mount /dev/nvme0n1p3 /mnt
+  111  ll
+  112  cd ..
+  113  cd /mnt
+  114  ll
+  115  btrfs subvolume list .
+  116  btrfs subvolume snapshot -r arch snapshots/arch_init_230824_5
+  117  reboot now
+  118  ll
+  119  ll
+  120  cd 1.Check/
+  121  ll
+  122  lk
+  123  ll *.sh
+  124  ./checkIommuGroup.sh 
+  125  cat /proc/cpuinfo |grep vmx
+  126  cd 1.Check/
+  127  ll
+  128  mv checkIommuEnabled.sh 1.checkIommuEnabled.sh 
+  129  ll
+  130  ./1.checkIommuEnabled.sh 
+  131  cat /proc/cpuinfo |grep vmx
+  132  modinfo kvm_intel | grep nested
+  133  ll
+  134  git remote -vv
+  135  mv checkIommuGroup.sh 2.checkIommuGroup.sh
+  136  ll
+  137  ./2.checkIommuGroup.sh 
+  138  vim /etc/default/grub 
+  139  grub-mkconfig -o /boot/grub/grub.cfg 
+  140  reboot now
+  141  cd /etc/qemu/
+  142  ll
+  143  cd ../
+  144  cd libvirt/
+  145  ll
+  146  vim libvirt.conf 
+  147  vim libvirtd.conf 
+  148  ll
+  149  qemu.con
+  150  vim qemu.conf
+  151  ll
+  152  systemctl status libvirtd
+  153  systemctl enable --now libvirtd
+  154  vim /etc/modprobe.d/kvm.conf
+  155  cd /etc/modprobe.d/
+  156  vim vfio.conf
+  157  mv /home/je/develop/KvmPassthrough/ ~/develop
+  158  cd
+  159  cd develop/
+  160  ll
+  161  cd /etc/systemd/network/
+  162  ll
+  163  vim 10-bridge.netdev
+  164  brctl
+  165  brctl show
+  166  ll
+  167  cat 20.wire.network 
+  168  systemctl restart systemd-networkd
+  169  ip addr
+  170  ip addr
+  171  ip addr
+  172  ip link set br0 up
+  173  ip addr
+  174  ip addr
+  175  ip link set br0 up
+  176  systemctl restart systemd-networkd
+  177  ip addr
+  178  brctl show
+  179  ip link set enp6s0 up
+  180  systemctl restart systemd-networkd
+  181  ip addr
+  182  cd Desktop/
+  183  cd ..
+  184  ll
+  185  cd
+  186  ll
+  187  cd /home/je
+  188  cd develop/
+  189  ll
+  190  cd KvmPassthrough/
+  191  ll
+  192  cd 1.Check/
+  193  ll
+  194  ./2.checkIommuGroup.sh 
+  195  ./2.checkIommuGroup.sh >iommu.group.result.gy02
+  196  cat 2.checkIommuGroup.sh 
+  197  ll
+  198  vim iommu.group.result.gy02
+  199  ./2.checkIommuGroup.sh 
+  200  pacman -S virt-manager virt-viewer qemu qemu-arch-extra edk2-ovmf vde2 ebtables dnsmasq bridge-utils openbsd-netcat libguestfs
+  201  pacman -Sy
+  202  pacman -S virt-manager virt-viewer qemu qemu-arch-extra edk2-ovmf vde2 ebtables dnsmasq bridge-utils openbsd-netcat libguestfs
+  203  pacman -S virt-manager virt-viewer qemu  edk2-ovmf vde2 ebtables dnsmasq bridge-utils openbsd-netcat libguestfs
+  204  pacman -S virt-manager virt-viewer qemu  edk2-ovmf vde2 ebtables dnsmasq bridge-utils openbsd-netcat libguestfs
+  205  pacman -Ss virt-man
+  206  vim /etc/libvirt/qemu.conf 
+  207  cd ../
+  208  cd new/
+  209  ll
+  210  chmod u+x bridge
+  211  chmod u+x bridge.sh 
+  212  ./bridge.sh 
+  213  ./bridge.sh 
+  214  ./bridge.sh 
+  215  virsh net-list
+  216  ip addr
+  217  virsh net-destroy br0
+  218  ./bridge.sh 
+  219  virsh net-define bridgenetwork.xml
+  220  virsh net-define bridgenetwork.xml
+  221  virsh net-define bridgenetwork.xml
+  222  virsh net-list --all
+  223  virsh net-destroy br0
+  224  virsh net-start br0
+  225  ip addr
+  226  pacman -Qs bridge
+  227  ip addr
+  228  virsh net-list
+  229  virsh net-list --all
+  230  virsh net-undeine br1
+  231  virsh net-undefine br1
+  232  virsh net-list --all
+  233  virsh net-undefine br0
+  234  virsh net-list --all
+  235  netctl --help
+  236  brctl addif br0 enp6s0 && ip link set br0 up && ip link set enp6s0 up && systemctl restart systemd-networkd
+  237  ip addr
+  238  ip addr
+  239  ip link show br0
+  240  systemctl restart systemd-networkd
+  241  ip addr
+  242  cd develop/
+  243  cd develop/
+  244  ll
+  245  ll
+  246  cd new/
+  247  ll
+  248  virsh net-start br0
+  249  virsh net-start br0 -f
+  250  virsh net-start br0
+  251  ip addr
+  252  systemctl restart systemd-networkd
+  253  ip addr
+  254  cd /etc/systemd/networkd
+  255  cd /etc/systemd/network
+  256  ll
+  257  vim 30-br0-static.network 
+  258  ll
+  259  vim 25.network
+  260  systemctl restart systemd-networkd
+  261  ip addr
+  262  ip addr
+  263  ip addr
+  264  systemctl restart systemd-networkd
+  265  ip addr
+  266  ip a
+  267  ip r
+  268  ip link set enp6s0 up
+  269  ip a
+  270  ip link show br0
+  271  systemctl restart systemd-networkd
+  272  ip addr
+  273  systemctl restart systemd-networkd
+  274  ip addr
+  275  ip addr
+  276  cd /etc/systemd/network/
+  277  echo "# ArchNetworkConfigFor02" >> README.md
+  278  git init
+  279  git add README.md
+  280  git commit -m "first commit"
+  281  git branch -M main
+  282  git remote add origin git@github.com:jueane/ArchNetworkConfigFor02.git
+  283  git push -u origin main
+  284  git config --global user.email je@jueane.com
+  285   git config --global user.name je
+  286  git push -u origin main
+  287  git branch -vv
+  288  git status
+  289  git add .
+  290  git status
+  291  git commit -m init
+  292  git push
+  293  git push -u origin main
+  294  reboot now
+  295  mv ~/iso/ /home/je/
+  296  lsblk
+  297  mount /dev/nvme1n1p5 /mnt
+  298  cd /mnt
+  299  ll
+  300  cd ..
+  301  umount /mnt
+  302  mount /dev/nvme0n1p3 /mnt
+  303  cd /mnt
+  304  ll
+  305  btrfs subvolume list .
+  306  btrfs subvolume snapshot -r arch snapshots/arch_init_230825
+  307  cd ..
+  308  cd /mnt
+  309  btrfs subvolume snapshot -r arch snapshots/arch_init_230825_2
+  310  cd ..
+  311  umount /mnt
+  312  qemu-img --help
+  313  qemu-img create -f raw win10.img +128G
+  314  ll
+  315  ip addr
+  316  virsh net-list --all
+  317  cd develop/
+  318  ll
+  319  cd new
+  320  ll
+  321  virsh net-define b40.xml 
+  322  virsh net-list --all
+  323  virsh net-start br0
+  324  virsh net-autostart br0
+  325  virsh net-list
+  326  virsh net-list --all
+  327  virsh net-info br0
+  328  ip addr
+  329  vim /etc/libvirt/libvirtd.conf
+  330  usermod -a -G kvm $(whoami)
+  331   usermod -a -G libvirt $(whoami)
+  332  newgrp libvirt
+  333  systool -m kvm_intel -v | grep nested
+  334  cat /sys/module/kvm_intel/parameters/nested
+  335  virsh list
+  336  virsh list --all
+  337  virsh start win10 
+  338  virsh list --all
+  339  virsh list --all
+  340  systemctl status virtlogd
+  341  ls
+  342  virsh destroy win10 
+  343  mkdir qemu
+  344  cp Asus.RTX3060.12288.210510_1.rom rtx3060.rom
+  345  mv rtx3060.rom qemu/
+  346  ls
+  347  ls
+  348  cd qemu/
+  349  ls
+  350  pwd
+  351  ll
+  352  chmod a+rw rtx3060.rom 
+  353  ll
+  354  cp rtx3060.rom /usr/share/vgabios/rtx3060.rom
+  355  cd /usr/share/vgabios/
+  356  mkdir /usr/share/vgabios/
+  357  cd /usr/share/vgabios/
+  358  ll
+  359  cp /root/qemu/rtx3060.rom .
+  360  ll
+  361  reboot now
+  362  virsh start win10 
+  363  lsmod | grep vfio
+  364  cat /proc/cpuinfo | egrep 'vmx|svm'
+  365  cat /etc/sysconfig/selinux
+  366  history 
+  367  ll /usr/share/vgabios/rtx3060.rom
+  368  virsh edit win10 
+  369  htop
+  370  top
+  371  pacman -S htop
+  372  top
+  373  htop
+  374  virsh destroy win10 
+  375  lsmod | grep vfio
+  376  cd /etc/modprobe.d/
+  377  ll
+  378  cat kvm.conf 
+  379  cat vfio.conf 
+  380  virsh list
+  381  reboot now
+  382  cd qemu/
+  383  ll
+  384  ls -al
+  385  cp rtx3060fix.rom /usr/share/vgabios/
+  386  ls /usr/share/vgabios/rtx3060
+  387  ls /usr/share/vgabios/rtx3060fix.rom 
+  388  virsh edit win10 
+  389  virsh start win10
+  390  journalctl -b -p 3
+  391  journalctl -b -p 3
+  392  virsh  list --all
+  393  virsh destroy win10
+  394  dmesg | grep -e DMAR -e IOMMU
+  395  ll
+  396  vim test.sh
+  397  chmod u+x test.sh 
+  398  ./test.sh 
+  399  vim /etc/mkinitcpio.conf
+  400  dmesg | grep -i vfio
+  401  dmesg
+  402  virsh destroy win10 
+  403  systemctl status virtlogd.socket
+  404  sudo systemctl restart libvirtd.service
+  405  sudo systemctl restart virtlogd.socket
+  406  virsh start win10
+  407  ll
+  408  cd
+  409  cd develop/
+  410  ll
+  411  cd 1.Check/
+  412  ll
+  413  ./2.checkIommuGroup.sh 
+  414  ./2.checkIommuGroup.sh 
+  415  virsh list
+  416  virsh destroy win10 
+  417  virsh start win10 
+  418  lspci -n | grep -E "0300|0403"
+  419  [200~lsmod | grep vfio~
+  420  lsmod | grep vfio
+  421  lsmod | grep vfio
+  422  virsh start win10
+  423  virsh shutdown win10
+  424  cd /mnt
+  425  ll
+  426  lsblk
+  427  mount /dev/nvme0n1p3 /mnt
+  428  ll
+  429  cd ..
+  430  cd /mnt
+  431  ll
+  432  btrfs subvolume list .
+  433  btrfs subvolume snapshot -r arch/ snapshots/arch_init_230825_3_pt_ok
+  434  cd
+  435  virsh start win10
+  436  pacman zfs-linux-lts
+  437  pacman -S zfs-linux-lts
+  438  pacman -Ss zfs
+  439  vim /etc/pacman.conf 
+  440  pacman -Sy
+  441  pacman -Sy
+  442  pacman -Syu
+  443  yay -S zfs-linux-lts
+  444  yay -Ss zfs-linux-lts
+  445  pacman -S archzfs/zfs-linux-lts
+  446  wget  https://archzfs.com/archzfs.gpg
+  447  pacman-key -a archzfs.gpg
+  448  pacman -S archzfs/zfs-linux-lts
+  449  pacman -Sy
+  450  pacman-key -d DDF7DB817396A49B2A2723F7403BD972F75D9D76
+  451  pacman-key -r DDF7DB817396A49B2A2723F7403BD972F75D9D76
+  452  pacman -S archzfs/zfs-linux-lts
+  453  pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
+  454  pacman -S archzfs/zfs-linux-lts
+  455  zpool status
+  456  modprobe zfs
+  457  zpool status
+  458  lsblk -f
+  459  zpool create -f -m /jdata jdata nvme-KINGSTON_SNV2S1000G_50026B7381D024C4
+  460  zpool status
+  461  zfs list
+  462  cd /jdata/
+  463  ll
+  464  zfs set compression=lz4 jdata
+  465  zfs get compression 
+  466  zfs create 
+  467  zfs create jdata/vdisk
+  468  zfs create jdata/vdisk/win10
+  469  cd /jdata/vdisk/win10
+  470  ll
+  471  virsh edit win10
+  472  cp /home/je/qemu/vdisk/win10.img .
+  473  ll
+  474  pwd
+  475  zfs snapshot jdata/vdisk/win10@230825
+  476  zfs list
+  477  zfs list -t snapshot jdata/vdisk/win10
+  478  zfs list
+  479  cat /etc/zfs/zpool.cache 
+  480  cat /etc/zfs/zpool.cache 
+  481  zpool get cachefile 
+  482  zpool set cachefile=/etc/zfs/zpool.cache jdata
+  483  zpool get cachefile 
+  484  systemctl status zfs-import-cache.service
+  485  systemctl enable zfs-import-cache.service
+  486  systemctl enable zfs-import.target
+  487  systemctl enable zfs-mount.service
+  488  systemctl enable zfs.target
+  489  lsblk -f
+  490  zfs list 
+  491  virsh list
+  492  reboot now
+  493  lsblk -f
+  494  lsblk
+  495  fidsk -l
+  496  fdisk -l
+  497  ls /dev/disk/by-id/
+  498  ll
+  499  cd /dev/disk/by-id
+  500  ll
+  501  df -h
+  502  zfs list
+  503  cd /jdata/
+  504  ls
+  505  virsh edit win10
+  506  mount /dev/nvme0n1p3 /mnt
+  507  cd /mnt
+  508  ll
+  509  btrfs subvolume list .
+  510  btrfs subvolume snapshot -r arch snapshots/arch_init_230825_3_zfs_ok
+  511  history 
+  512  cd
+  513  ll
+  514  cd develop/
+  515  ll
+  516  cd new
+  517  ls
+  518  history > command_history.txt
