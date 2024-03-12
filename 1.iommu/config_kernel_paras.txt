@@ -1,6 +1,0 @@
-b85hd3-a__e31231v3_gtx970
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 intel_iommu=on iommu=pt default_hugepagesz=1G hugepagesz=1G hugepages=20"
-
-ASUS PRIME B460-PLUS
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet intel_iommu=on iommu=pt default_hugepagesz=1G hugepagesz=1G hugepages=52"
-
