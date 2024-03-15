@@ -1,0 +1,14 @@
+
+
+
+
+
+    <input type='evdev'>
+      <source dev='/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse'/>
+      <alias name='input2'/>
+    </input>
+    <input type='evdev'>
+      <source dev='/dev/input/by-id/usb-MOSART_Semi._wireless_dongle-event-kbd' grab='all' grabToggle='ctrl-ctrl' repeat='on'/>
+      <alias name='input3'/>
+    </input>
+
