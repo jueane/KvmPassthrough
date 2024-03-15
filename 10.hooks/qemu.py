@@ -24,16 +24,19 @@ def check_process_exists(process_name):
 
 
 def open_gui():
+    return
+    time.sleep(5)
     print('OpenGUI')
-    # os.system('startx')
+    os.system('startx')
 
 
 def close_gui():
+    return
     print('CloseGUI')
     exist = False
 
-    gui_process_name = "xinit"
-    # gui_process_name = "htop"
+    # gui_process_name = "xinit"
+    gui_process_name = 'Xorg'
 
     # 检查进程是否存在
     pid = check_process_exists(gui_process_name)
@@ -63,8 +66,7 @@ def on_prepare():
     print(cmd)
     os.system(cmd)
     if need_passthrough:
-        pass
-        # close_gui()
+        close_gui()
 
 
 def on_release():
