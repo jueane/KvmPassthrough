@@ -1,0 +1,25 @@
+ChinaNet-sYSp-5G
+wgsxivzr
+
+
+连接不上：
+iw dev wlan0 connect "ChinaNet-sYSp-5G" key 0:wgsxivzr
+
+连接成功：
+nmcli device wifi connect "ChinaNet-sYSp-5G" password "wgsxivzr"
+
+
+
+
+
+桌面工具。
+  478  pacman -S network-manager-applet
+  479  network-manager-applet
+  暂时还要手动启动UI网络管理。
+  480  NetworkManager
+
+
+
+
+  直通设备：
+  0000:05:00:0 Intel Corporation Wi-Fi 7(802.11be) AX1775*/AX1790*/BE20*/BE401/BE1750* 2x2
