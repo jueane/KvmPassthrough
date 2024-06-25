@@ -62,12 +62,9 @@ def close_gui():
 
 
 def on_prepare():
-    # cmd = f'/jdata/develop/AutoSnapshot/zfs/data_snap.py ' + guest_name
-    cmd_2 = f'/jdata/develop/AutoSnapshot/disk_image/data_snap.py ' + guest_name
-    # print(cmd)
-    print(cmd_2)
-    # os.system(cmd)
-    os.system(cmd_2)
+    cmd = f'/jdata/develop/AutoSnapshot/SnapshotForVM.py ' + guest_name
+    print(cmd)
+    os.system(cmd)
     if need_passthrough:
         close_gui()
 
