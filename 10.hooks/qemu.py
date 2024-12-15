@@ -3,6 +3,7 @@ import os
 import sys
 import time
 from datetime import datetime
+import psutil
 
 guest_name = sys.argv[1]
 libvirt_task = sys.argv[2]
@@ -31,7 +32,6 @@ def open_gui():
 
 
 def close_gui():
-    return
     print('CloseGUI')
     exist = False
 
@@ -43,6 +43,7 @@ def close_gui():
     if pid > 0:
         print(f"Process {gui_process_name} exist")
         os.kill(pid, 15)
+        # os.system("pkill Xorg")
         wait_count = 0
         while True:
             wait_count += 1
@@ -67,11 +68,19 @@ def on_prepare():
     os.system(cmd)
     if need_passthrough:
         close_gui()
+        # os.system("pkill Xorg")
+        # time.sleep(5)
+        os.system("modprobe -r nvidia_drm")
+        os.system("modporbe -r nvidia_uvm")
+        os.system("modprobe -r nvidia")
 
 
 def on_release():
     if need_passthrough:
-        open_gui()
+        os.system("modprobe nvidia")
+        os.system("modporbe nvidia_uvm")
+        os.system("modprobe nvidia_drm")
+        # open_gui()
 
 
 def qemu_process():
