@@ -1,5 +1,5 @@
 编辑libvirt.conf
-sudo vim /etc/libvirt/libvirtd.conf
+vim /etc/libvirt/libvirtd.conf
 找到这两行，把前面的#删掉：
 unix_sock_group = "libvirt"
 unix_sock_rw_perms = "0770"
@@ -11,17 +11,15 @@ log_outputs="1:file:/var/log/libvirt/libvirtd.log"
 
 
 编辑qemu.conf
-sudo vim /etc/libvirt/qemu.conf
+vim /etc/libvirt/qemu.conf
 修改:
-user = "root"
+user = "je" （或user = "root"）
 group = "libvirt"
 
 把自己添加到libvirt组里面：
-sudo usermod -a -G libvirt 用户名
-
+usermod -a -G libvirt je
 
 
 重启电脑或者重启libvirt
-
 sudo systemctl restart libvirtd.service
 sudo systemctl restart virtlogd.socket
