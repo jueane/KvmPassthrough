@@ -32,6 +32,7 @@ def open_gui():
 
 
 def close_gui():
+    return
     print('CloseGUI')
     exist = False
 
@@ -68,19 +69,17 @@ def on_prepare():
     os.system(cmd)
     if need_passthrough:
         close_gui()
-        # os.system("pkill Xorg")
-        # time.sleep(5)
-        os.system("modprobe -r nvidia_drm")
-        os.system("modporbe -r nvidia_uvm")
-        os.system("modprobe -r nvidia")
+        # os.system("modprobe -r nvidia_drm")
+        # os.system("modporbe -r nvidia_uvm")
+        # os.system("modprobe -r nvidia")
 
 
 def on_release():
     if need_passthrough:
-        os.system("modprobe nvidia")
-        os.system("modporbe nvidia_uvm")
-        os.system("modprobe nvidia_drm")
-        # open_gui()
+        # os.system("modprobe nvidia")
+        # os.system("modporbe nvidia_uvm")
+        # os.system("modprobe nvidia_drm")
+        open_gui()
 
 
 def qemu_process():
@@ -91,5 +90,25 @@ def qemu_process():
     elif libvirt_task.__contains__('release'):
         on_release()
 
+
+def check_nvidia_module_loaded():
+    try:
+        with open('/proc/modules', 'r') as f:
+            content = f.read()
+            lines = content.splitlines()
+            for line in lines:
+                module_name = line.split()[0]
+                if 'nvidia' in module_name.lower():
+                    return True
+            return False
+    except FileNotFoundError:
+        print("/proc/modules文件不存在，可能不是Linux系统或者系统存在异常")
+        return False
+
+
+if check_nvidia_module_loaded():
+    print("已加载含nvidia的内核模块")
+else:
+    print("未加载含nvidia的内核模块")
 
 qemu_process()
