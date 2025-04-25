@@ -1,0 +1,4 @@
+避坑：
+
+ <cpu> 下面的 <feature policy="disable" name="hypervisor"/>
+    这个配置实测过不了三角洲行动的虚拟机检测。可以看作无用。 且性能降低5%.
