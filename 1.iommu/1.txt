@@ -1,0 +1,95 @@
+IOMMU group 1
+	01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD106 [GeForce RTX 4060 Ti] [10de:2803] (rev a1)
+	     	Driver: vfio-pci
+	01:00.1 Audio device [0403]: NVIDIA Corporation AD106M High Definition Audio Controller [10de:22bd] (rev a1)
+	     	Driver: vfio-pci
+IOMMU group 
+	00:15.0 Serial bus controller [0c80]: Intel Corporation Raptor Lake Serial IO I2C Host Controller #0 [8086:7a4c] (rev 11)
+	     	Driver: intel-lpss
+	00:15.1 Serial bus controller [0c80]: Intel Corporation Raptor Lake Serial IO I2C Host Controller #1 [8086:7a4d] (rev 11)
+	     	Driver: intel-lpss
+	00:15.2 Serial bus controller [0c80]: Intel Corporation Raptor Lake Serial IO I2C Host Controller #2 [8086:7a4e] (rev 11)
+	     	Driver: intel-lpss
+IOMMU group 15
+	00:1d.0 PCI bridge [0604]: Intel Corporation Raptor Lake PCI Express Root Port #9 [8086:7a30] (rev 11)
+	     	Driver: pcieport
+IOMMU group 5
+	00:0e.0 RAID bus controller [0104]: Intel Corporation Volume Management Device NVMe RAID Controller Intel Corporation [8086:a77f]
+	     	Driver: vmd
+IOMMU group 13
+	00:1c.3 PCI bridge [0604]: Intel Corporation Raptor Lake PCI Express Root Port #4 [8086:7a3b] (rev 11)
+	     	Driver: pcieport
+IOMMU group 3
+	00:06.0 PCI bridge [0604]: Intel Corporation Raptor Lake PCIe 4.0 Graphics Port [8086:a74d] (rev 01)
+	     	Driver: pcieport
+IOMMU group 21
+	06:00.0 Ethernet controller [0200]: Intel Corporation Ethernet Controller I226-V [8086:125c] (rev 06)
+	     	Driver: igc
+IOMMU group 11
+	00:1b.0 PCI bridge [0604]: Intel Corporation Raptor Lake PCI Express Root Port #17 [8086:7a40] (rev 11)
+	     	Driver: pcieport
+IOMMU group 1
+	00:00.0 Host bridge [0600]: Intel Corporation Raptor Lake-S Host Bridge/DRAM Controller [8086:a703] (rev 01)
+	     	Driver: none
+IOMMU group 18
+	02:00.0 Non-Volatile memory controller [0108]: Shenzhen Longsys Electronics Co., Ltd. Lexar NM790 NVME SSD (DRAM-less) [1d97:1602] (rev 01)
+	     	Driver: nvme
+IOMMU group 8
+	00:16.0 Communication controller [0780]: Intel Corporation Raptor Lake CSME HECI #1 [8086:7a68] (rev 11)
+	     	Driver: mei_me
+IOMMU group 16
+	00:1f.0 ISA bridge [0601]: Intel Corporation Raptor Lake LPC/eSPI Controller [8086:7a04] (rev 11)
+	     	Driver: none
+	00:1f.3 Audio device [0403]: Intel Corporation Raptor Lake High Definition Audio Controller [8086:7a50] (rev 11)
+	     	Driver: snd_hda_intel
+	00:1f.4 SMBus [0c05]: Intel Corporation Raptor Lake-S PCH SMBus Controller [8086:7a23] (rev 11)
+	     	Driver: i801_smbus
+	00:1f.5 Serial bus controller [0c80]: Intel Corporation Raptor Lake SPI (flash) Controller [8086:7a24] (rev 11)
+	     	Driver: intel-spi
+IOMMU group 6
+	00:14.0 USB controller [0c03]: Intel Corporation Raptor Lake USB 3.2 Gen 2x2 (20 Gb/s) XHCI Host Controller [8086:7a60] (rev 11)
+	     	Driver: vfio-pci
+	00:14.2 RAM memory [0500]: Intel Corporation Raptor Lake-S PCH Shared SRAM [8086:7a27] (rev 11)
+	     	Driver: none
+IOMMU group 14
+	00:1c.4 PCI bridge [0604]: Intel Corporation Device [8086:7a3c] (rev 11)
+	     	Driver: pcieport
+IOMMU group 4
+	00:0a.0 Signal processing controller [1180]: Intel Corporation Raptor Lake Crashlog and Telemetry [8086:a77d] (rev 01)
+	     	Driver: intel_vsec
+IOMMU group 22
+	07:00.0 Non-Volatile memory controller [0108]: MAXIO Technology (Hangzhou) Ltd. NVMe SSD Controller MAP1602 (DRAM-less) [1e4b:1602] (rev 01)
+	     	Driver: nvme
+IOMMU group 12
+	00:1c.0 PCI bridge [0604]: Intel Corporation Raptor Lake PCI Express Root Port #1 [8086:7a38] (rev 11)
+	     	Driver: pcieport
+IOMMU group 2
+	00:01.0 PCI bridge [0604]: Intel Corporation Raptor Lake PCI Express 5.0 Graphics Port (PEG010) [8086:a70d] (rev 01)
+	     	Driver: pcieport
+IOMMU group 20
+	05:00.0 Network controller [0280]: Intel Corporation Wi-Fi 7(802.11be) AX1775*/AX1790*/BE20*/BE401/BE1750* 2x2 [8086:272b] (rev 1a)
+	     	Driver: vfio-pci
+IOMMU group 10
+	00:1a.0 PCI bridge [0604]: Intel Corporation Raptor Lake PCI Express Root Port #25 [8086:7a48] (rev 11)
+	     	Driver: pcieport
+IOMMU group 0
+	00:02.0 VGA compatible controller [0300]: Intel Corporation Raptor Lake-S GT1 [UHD Graphics 770] [8086:a780] (rev 04)
+	     	Driver: i915
+IOMMU group 19
+	03:00.0 Non-Volatile memory controller [0108]: MAXIO Technology (Hangzhou) Ltd. NVMe SSD Controller MAP1602 (DRAM-less) [1e4b:1602] (rev 01)
+	     	Driver: nvme
+IOMMU group 9
+	00:17.0 SATA controller [0106]: Intel Corporation Raptor Lake SATA AHCI Controller [8086:7a62] (rev 11)
+	     	Driver: ahci
+		     Block device:
+		[22;32m	Model: Samsung SSD 850 
+		[22;32m	sdb    232.9G 
+		[22;32m	├─sdb1    16M 
+		[22;32m	├─sdb2 232.2G 
+		[22;32m	└─sdb3   679M 
+		     Block device:
+		[22;32m	Model: Samsung SSD 870 
+		[22;32m	sda    931.5G 
+		[22;32m	├─sda1     1G /boot/EFI
+		[22;32m	├─sda3 860.5G /
+		[22;32m	└─sda4    32G [SWAP]
