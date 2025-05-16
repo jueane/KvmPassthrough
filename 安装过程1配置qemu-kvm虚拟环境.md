@@ -1,8 +1,6 @@
 # 开启虚拟化.
 bios中开启虚拟化.
-
-开启虚拟化：
-Advanced -> Cpu Configure -> Intel virtual technology
+Advanced -> CPU Configuration -> Intel Virtualization Technology
 开启VT-d:
 Advanced -> System Agent(SA) Configure -> VT-d
 
