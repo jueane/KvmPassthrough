@@ -1,0 +1,41 @@
+<domain type='kvm'>
+  <name>new-vm-name</name>
+  <memory unit='GiB'>4</memory>
+  <vcpu>4</vcpu>
+  <os>
+    <type arch='x86_64'>hvm</type>
+    <boot dev='cdrom'/>   <!-- 首次启动从ISO安装 -->
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+  </features>
+  <cpu mode='host-passthrough'/>
+  <clock offset='utc'/>
+  <devices>
+    <!-- 磁盘配置 -->
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='raw'/>  <!-- 若磁盘是 qcow2 则改为 type='qcow2' -->
+      <source file='/jdata/vdisk/test1/test.img'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    
+    <!-- ISO镜像 -->
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <source file='/root/iso/archlinux-2025.05.01-x86_64.iso'/>
+      <target dev='sda' bus='sata'/>
+      <readonly/>
+    </disk>
+
+    <!-- 网络桥接配置（关键修改部分） -->
+    <interface type='bridge'>
+      <source bridge='br0'/>            <!-- 使用桥接接口 br0 -->
+      <model type='virtio'/>            <!-- 高性能虚拟化驱动 -->
+    </interface>
+
+    <!-- vnc连接 -->
+    <graphics type='vnc' port='-1' listen='0.0.0.0'/>
+
+  </devices>
+</domain>
