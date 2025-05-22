@@ -8,7 +8,7 @@ virsh define vm_template.xml
 
 # 启动前配置
 修改虚拟机名称
-virsh domrename new-vm-name vm1
+virsh domrename new-vm vm1
 
 # 确认VNC端口与转发​​
 virsh vncdisplay arch-test1
@@ -17,5 +17,3 @@ virsh vncdisplay arch-test1
 
 # 虚拟机系统安装完成后配置
 修改启动顺序（将 <boot dev='cdrom'/> 改为 <boot dev='hd'/>）
-删除CDROM设备：
-<disk type='file' device='cdrom'>...</disk>
