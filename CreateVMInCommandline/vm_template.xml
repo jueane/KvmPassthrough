@@ -1,10 +1,14 @@
 <domain type='kvm'>
-  <name>new-vm-name</name>
+  <name>new-vm</name>
   <memory unit='GiB'>4</memory>
+  <currentMemory unit='GiB'>4</currentMemory>
   <vcpu>4</vcpu>
   <os>
-    <type arch='x86_64'>hvm</type>
+    <type arch='x86_64' machine='pc-q35-7.0'>hvm</type>
+    <loader readonly='yes' type='pflash' format='raw'>/usr/share/edk2-ovmf/x64/OVMF_CODE.4m.fd</loader>
+    <nvram>/jdata/vdisk/test1/OVMF_VARS.4m.fd</nvram>
     <boot dev='cdrom'/>   <!-- 首次启动从ISO安装 -->
+    <smbios mode='host'/>
   </os>
   <features>
     <acpi/>
@@ -12,6 +16,9 @@
   </features>
   <cpu mode='host-passthrough'/>
   <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
   <devices>
     <!-- 磁盘配置 -->
     <disk type='file' device='disk'>
@@ -28,6 +35,11 @@
       <readonly/>
     </disk>
 
+    <controller type='pci' index='0' model='pcie-root'/>
+    <controller type='virtio-serial' index='0'/>
+    <controller type='sata' index='0'/>
+    <controller type='usb' index='0' model='qemu-xhci'/>
+    
     <!-- 网络桥接配置（关键修改部分） -->
     <interface type='bridge'>
       <source bridge='br0'/>            <!-- 使用桥接接口 br0 -->
