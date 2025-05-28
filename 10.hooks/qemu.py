@@ -64,9 +64,10 @@ def close_gui():
 
 
 def on_prepare():
-    cmd = f'/jdata/develop/AutoSnapshot/SnapshotForVM.py ' + guest_name
-    print(cmd)
-    os.system(cmd)
+    # 暂时去掉开机快照，懒的维护
+    # cmd = f'/jdata/develop/AutoSnapshot/SnapshotForVM.py ' + guest_name
+    # print(cmd)
+    # os.system(cmd)
     if need_passthrough:
         close_gui()
         # os.system("modprobe -r nvidia_drm")
