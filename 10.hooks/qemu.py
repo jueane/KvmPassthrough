@@ -10,7 +10,7 @@ libvirt_task = sys.argv[2]
 
 enabled_video_processor = False
 
-passthrough_vm_names = ['win11', 'win10', 'ubuntu', 'manjaro', 'win7']
+passthrough_vm_names = ["win11", "win10", "ubuntu", "manjaro", "win7"]
 
 need_passthrough = False
 if guest_name in passthrough_vm_names:
@@ -18,8 +18,8 @@ if guest_name in passthrough_vm_names:
 
 
 def check_process_exists(process_name):
-    for process in psutil.process_iter(['name']):
-        if process.info['name'] == process_name:
+    for process in psutil.process_iter(["name"]):
+        if process.info["name"] == process_name:
             return process.pid
     return -1
 
@@ -27,17 +27,17 @@ def check_process_exists(process_name):
 def open_gui():
     return
     time.sleep(5)
-    print('OpenGUI')
-    os.system('startx')
+    print("OpenGUI")
+    os.system("startx")
 
 
 def close_gui():
     return
-    print('CloseGUI')
+    print("CloseGUI")
     exist = False
 
     # gui_process_name = "xinit"
-    gui_process_name = 'Xorg'
+    gui_process_name = "Xorg"
 
     # 检查进程是否存在
     pid = check_process_exists(gui_process_name)
@@ -52,10 +52,10 @@ def close_gui():
             pid = check_process_exists(gui_process_name)
             if pid > 0:
                 time.sleep(1)
-                print(f'Waiting for {gui_process_name}')
+                print(f"Waiting for {gui_process_name}")
                 continue
             else:
-                print(f'Process {gui_process_name} terminated')
+                print(f"Process {gui_process_name} terminated")
                 time.sleep(3)
                 break
     else:
@@ -64,10 +64,22 @@ def close_gui():
 
 
 def on_prepare():
+    # check nvidia
+    if check_nvidia_module_loaded():
+        print("已加载含nvidia的内核模块")
+    else:
+        print("未加载含nvidia的内核模块")
+
     # 暂时去掉开机快照，懒的维护
-    # cmd = f'/jdata/develop/AutoSnapshot/SnapshotForVM.py ' + guest_name
-    # print(cmd)
-    # os.system(cmd)
+    dataset = f"/jdata/vdisk/{guest_name}"
+    if os.path.exists(dataset):
+        print(f"路径 {dataset} 存在")
+        cmd = f"/jdata/develop/AutoSnapshot/SnapshotHelper.py snap {dataset}"
+        print(cmd)
+        os.system(cmd)
+    else:
+        print(f"路径 {dataset} 不存在")
+
     if need_passthrough:
         close_gui()
         # os.system("modprobe -r nvidia_drm")
@@ -84,22 +96,24 @@ def on_release():
 
 
 def qemu_process():
-    print(f'{datetime.now()}: {guest_name} {libvirt_task}, passthrough:{need_passthrough}')
+    print(
+        f"{datetime.now()}: {guest_name} {libvirt_task}, passthrough:{need_passthrough}"
+    )
 
-    if libvirt_task.__contains__('prepare'):
+    if libvirt_task.__contains__("prepare"):
         on_prepare()
-    elif libvirt_task.__contains__('release'):
+    elif libvirt_task.__contains__("release"):
         on_release()
 
 
 def check_nvidia_module_loaded():
     try:
-        with open('/proc/modules', 'r') as f:
+        with open("/proc/modules", "r") as f:
             content = f.read()
             lines = content.splitlines()
             for line in lines:
                 module_name = line.split()[0]
-                if 'nvidia' in module_name.lower():
+                if "nvidia" in module_name.lower():
                     return True
             return False
     except FileNotFoundError:
@@ -107,9 +121,5 @@ def check_nvidia_module_loaded():
         return False
 
 
-if check_nvidia_module_loaded():
-    print("已加载含nvidia的内核模块")
-else:
-    print("未加载含nvidia的内核模块")
-
 qemu_process()
+print("-----------------------end---------------------------")
