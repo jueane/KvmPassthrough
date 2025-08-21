@@ -116,3 +116,23 @@ passwd
 pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=jgrub
 grub-mkconfig -o /boot/grub/grub.cfg
+
+
+# 安装桌面环境（可选）（未验证）
+> 安装
+pacman -S plasma xorg-server xorg-xinit dbus
+
+> 创建普通用户je
+
+> 配置.xinitrc
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+
+ibus-daemon -drx
+
+export DESKTOP_SESSION=PLASMA
+exec startplasma-x11
+
+#export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+
