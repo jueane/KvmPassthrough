@@ -118,6 +118,13 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=jgrub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
+# 中文支持（可选）
+>编辑 /etc/locale.gen，然后取消掉 en_US.UTF-8。接着生成 locale 信息：
+执行命令：locale-gen
+>在终端中让 Git 正确显示中文，而不是编码（避免路径转义）：
+执行命令：git config --global core.quotepath false
+
+
 # 安装桌面环境（可选）（未验证）
 > 安装
 pacman -S plasma xorg-server xorg-xinit dbus
