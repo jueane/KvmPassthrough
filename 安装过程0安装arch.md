@@ -65,6 +65,10 @@ arch-chroot /mnt
 
 (后续内容全都是在arch-chroot中进行)
 
+# 安装必须包
+(arch-chroot之前已经配置了安装环境的网络，在此可以直接使用，然后再配置网络)
+pacman -S vim openssh grub efibootmgr
+
 # 配置网络
 >> 创建文件
 /etc/systemd/network/20.wired.network
@@ -72,31 +76,31 @@ arch-chroot /mnt
 >> 编辑内容：
 [Match]
 Name=en*
+Name=eth*
 [Network]
 Address=192.168.20.14/24
 Gateway=192.168.20.254
-DNS=114.114.114.114
+
+>> 配置DNS /etc/resolv.conf
+nameserver 192.168.20.10
 
 >> 网络服务配置
 systemctl enable --now systemd-networkd
 systemctl enable --now systemd-resolved
 
 # 配置ssh
-pacman -Sy
-pacman -S openssh
 vim /etc/ssh/sshd_config
 > 允许root登录（修改值）
 PermitRootLogin yes
-> 允许密码验证（反注释）
+> 允许密码验证（arch中非必须）
 PasswordAuthentication yes
-> 重启sshd
+> 配置服务
 systemctl restart sshd
+systemctl enable --now sshd
 > 修改密码
 passwd
 
 # 在新系统中配置
-pacman -S vim
-
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc
 
@@ -104,6 +108,9 @@ hwclock --systohc
 vim /etc/locale.gen
 >> 接着执行 locale-gen 以生成 locale 信息：
 locale-gen
+> （可选）在终端中让 Git 正确显示中文，而不是显示编码（避免路径转义）：
+执行命令：git config --global core.quotepath false
+
 
 >> 创建 hostname 文件：
 /etc/hostname
@@ -112,17 +119,11 @@ locale-gen
 passwd
 
 # 安装引导
-先arch-chroot /mnt 进入新系统安装，否则会报错。
-pacman -S grub efibootmgr
+（确保已经 arch-chroot /mnt 进入新系统安装，否则会报错）
+（前面已经安装了grub efibootmgr）
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=jgrub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-
-# 中文支持（可选）
->编辑 /etc/locale.gen，然后取消掉 en_US.UTF-8。接着生成 locale 信息：
-执行命令：locale-gen
->在终端中让 Git 正确显示中文，而不是编码（避免路径转义）：
-执行命令：git config --global core.quotepath false
 
 
 # 安装桌面环境（可选）（未验证）
