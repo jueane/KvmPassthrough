@@ -63,14 +63,8 @@ def close_gui():
         time.sleep(0.5)
 
 
-def on_prepare():
-    # check nvidia
-    if check_nvidia_module_loaded():
-        print("已加载含nvidia的内核模块")
-    else:
-        print("未加载含nvidia的内核模块")
-
-    # 暂时去掉开机快照，懒的维护
+def create_snapshot(guest_name):
+    # 暂时去掉开机快照，防止创建不必要的快照
     dataset = f"/jdata/vdisk/{guest_name}"
     if os.path.exists(dataset):
         print(f"路径 {dataset} 存在")
@@ -79,6 +73,16 @@ def on_prepare():
         os.system(cmd)
     else:
         print(f"路径 {dataset} 不存在")
+
+
+def on_prepare():
+    # check nvidia
+    if check_nvidia_module_loaded():
+        print("已加载含nvidia的内核模块")
+    else:
+        print("未加载含nvidia的内核模块")
+
+    create_snapshot(guest_name)
 
     if need_passthrough:
         close_gui()
