@@ -64,7 +64,6 @@ def close_gui():
 
 
 def create_snapshot(guest_name):
-    # 暂时去掉开机快照，防止创建不必要的快照
     dataset = f"/jdata/vdisk/{guest_name}"
     if os.path.exists(dataset):
         print(f"路径 {dataset} 存在")
@@ -82,7 +81,8 @@ def on_prepare():
     else:
         print("未加载含nvidia的内核模块")
 
-    create_snapshot(guest_name)
+    # 暂时去掉开机快照，防止创建不必要的快照
+    # create_snapshot(guest_name)
 
     if need_passthrough:
         close_gui()
