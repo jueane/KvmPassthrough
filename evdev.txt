@@ -1,14 +1,30 @@
 
-
-
-
-
-    <input type='evdev'>
-      <source dev='/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse'/>
-      <alias name='input2'/>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse"/>
     </input>
-    <input type='evdev'>
-      <source dev='/dev/input/by-id/usb-MOSART_Semi._wireless_dongle-event-kbd' grab='all' grabToggle='ctrl-ctrl' repeat='on'/>
-      <alias name='input3'/>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-MOSART_Semi._wireless_dongle-event-kbd" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
     </input>
+
+
+    usb-Compx_VGN_Mouse_2.4G_Receiver-if02-event-mouse
+
+
+    有线
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-compx_VGN_F1_MOBA-if02-event-mouse"/>
+    </input>
+
+
+
+    f1 moba:
+    狼蛛f87pro:
+
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-Compx_VGN_Mouse_2.4G_Receiver-if02-event-mouse"/>
+    </input>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-CX_2.4G_Wireless_Receiver-event-kbd" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
+    </input>
+
 
