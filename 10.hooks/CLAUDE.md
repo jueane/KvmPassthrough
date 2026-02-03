@@ -25,22 +25,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```
 libvirt 事件触发
     ↓
-/etc/libvirt/hooks/qemu (Bash wrapper)
-    ↓
-qemu.py (Python 主逻辑)
+/etc/libvirt/hooks/qemu (src/qemu.ts)
     ↓
 vfio-startup.sh / vfio-teardown.sh (GPU 绑定/解绑)
 ```
 
 ### 文件说明
 
-- **qemu** (Bash): libvirt hooks 入口点,记录日志并调用 qemu.py
-- **qemu.py** (Python): 主逻辑控制器
+- **src/qemu.ts** (TypeScript): 主逻辑控制器
   - 检查虚拟机名称是否需要 GPU 直通
   - 在 `prepare` 阶段关闭宿主机 GUI、卸载 nvidia 驱动
   - 在 `release` 阶段重新加载 nvidia 驱动、启动 GUI
   - 包含快照创建功能(当前已禁用)
-- **qemu.ts** (TypeScript): 测试/开发用的 TS 版本实现
+  - 自动记录日志到 /var/log/libvirt/hooks.log
 - **vfio-startup.sh**: GPU 解绑脚本
   - 解绑 VT 控制台和 EFI framebuffer
   - 卸载 nvidia 驱动模块
@@ -61,21 +58,23 @@ vfio-startup.sh / vfio-teardown.sh (GPU 绑定/解绑)
 bun install
 
 # 运行 TypeScript 版本 (测试用)
-bun run qemu.ts
+./src/qemu.ts win11 prepare/begin
 
 # 类型检查
-bun tsc --noEmit
+bunx tsc --noEmit
 ```
 
 ### 部署到系统
 
 ```bash
-# 将 qemu 脚本链接/复制到 libvirt hooks 目录
-sudo cp qemu /etc/libvirt/hooks/qemu
-sudo chmod +x /etc/libvirt/hooks/qemu
+# 赋予执行权限
+chmod +x src/qemu.ts vfio-startup.sh vfio-teardown.sh
 
-# 确保 Python 脚本可执行
-chmod +x qemu.py vfio-startup.sh vfio-teardown.sh
+# 部署到 libvirt hooks 目录（推荐使用符号链接）
+sudo ln -sf $(pwd)/src/qemu.ts /etc/libvirt/hooks/qemu
+
+# 重启 libvirtd 服务
+sudo systemctl restart libvirtd
 ```
 
 ### 调试与日志
@@ -119,19 +118,19 @@ virsh destroy win11
 
 ### 虚拟机名称配置
 
-需要 GPU 直通的虚拟机列表在 `qemu.py:13` 定义:
-```python
-passthrough_vm_names = ["win11", "win10", "ubuntu", "manjaro", "win7"]
+需要 GPU 直通的虚拟机列表在 `src/qemu.ts:24` 定义:
+```typescript
+const passthroughVmNames = ["win11", "win10", "ubuntu", "manjaro", "win7"];
 ```
 
 添加新虚拟机时需修改此列表。
 
 ### 快照功能
 
-代码中包含开机快照功能 (`create_snapshot`),但当前已禁用 (qemu.py:85):
-```python
-# 暂时去掉开机快照,防止创建不必要的快照
-# create_snapshot(guest_name)
+代码中包含开机快照功能 (`createSnapshot`),但当前已禁用 (src/qemu.ts:156):
+```typescript
+// 暂时去掉开机快照,防止创建不必要的快照
+// await createSnapshot(vmName);
 ```
 
 快照依赖外部工具: `/jdata/develop/AutoSnapshot/SnapshotHelper.py`

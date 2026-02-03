@@ -25,7 +25,7 @@ bun install
 
 ### 2. 配置虚拟机列表
 
-编辑 `qemu.ts` 文件，修改需要 GPU 直通的虚拟机列表：
+编辑 `src/qemu.ts` 文件，修改需要 GPU 直通的虚拟机列表：
 
 ```typescript
 const passthroughVmNames = ["win11", "win10", "ubuntu", "manjaro", "win7"];
@@ -48,17 +48,17 @@ virsh nodedev-detach pci_0000_01_00_1  # GPU Audio
 
 ```bash
 # 赋予执行权限
-chmod +x qemu.ts
+chmod +x src/qemu.ts
 chmod +x vfio-startup.sh
 chmod +x vfio-teardown.sh
 
 # 部署到 libvirt hooks 目录
-sudo cp qemu.ts /etc/libvirt/hooks/qemu
+sudo cp src/qemu.ts /etc/libvirt/hooks/qemu
 sudo cp vfio-startup.sh /etc/libvirt/hooks/
 sudo cp vfio-teardown.sh /etc/libvirt/hooks/
 
 # 或者使用符号链接（便于开发调试）
-sudo ln -sf $(pwd)/qemu.ts /etc/libvirt/hooks/qemu
+sudo ln -sf $(pwd)/src/qemu.ts /etc/libvirt/hooks/qemu
 sudo ln -sf $(pwd)/vfio-startup.sh /etc/libvirt/hooks/
 sudo ln -sf $(pwd)/vfio-teardown.sh /etc/libvirt/hooks/
 
@@ -72,8 +72,8 @@ sudo systemctl restart libvirtd
 
 ```bash
 # 测试脚本（不会实际执行 GPU 操作，因为相关功能已禁用）
-./qemu.ts win11 prepare/begin
-./qemu.ts win11 release/end
+./src/qemu.ts win11 prepare/begin
+./src/qemu.ts win11 release/end
 
 # 查看日志输出
 tail -f /var/log/libvirt/hooks.log
@@ -105,7 +105,7 @@ tail -f /var/log/libvirt/hooks.log
 
 ### 核心文件
 
-- **qemu.ts** - 主控制脚本（TypeScript 实现）
+- **src/qemu.ts** - 主控制脚本（TypeScript 实现）
     - 检查虚拟机是否需要 GPU 直通
     - 在 prepare 阶段调用 vfio-startup.sh
     - 在 release 阶段调用 vfio-teardown.sh
@@ -149,7 +149,7 @@ virsh list --all
 ```
 libvirt 虚拟机事件
     ↓
-/etc/libvirt/hooks/qemu (qemu.ts)
+/etc/libvirt/hooks/qemu (src/qemu.ts)
     ↓
 检查虚拟机是否在直通列表中
     ↓
@@ -241,7 +241,8 @@ sudo systemctl restart display-manager
 
 ```
 10.hooks/
-├── qemu.ts              # 主控制脚本 (TypeScript)
+├── src/
+│   └── qemu.ts          # 主控制脚本 (TypeScript)
 ├── vfio-startup.sh      # GPU 解绑脚本
 ├── vfio-teardown.sh     # GPU 绑定脚本
 ├── package.json         # 项目配置
