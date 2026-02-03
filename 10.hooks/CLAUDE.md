@@ -152,6 +152,7 @@ passthrough_vm_names = ["win11", "win10", "ubuntu", "manjaro", "win7"]
 ## TypeScript 配置
 
 项目使用严格的 TypeScript 配置 (详见 tsconfig.json):
+- 代码红缩进使用4个空格
 - 启用 `strict` 模式
 - `noUncheckedIndexedAccess: true` - 索引访问需要检查 undefined
 - `noImplicitOverride: true` - 重写方法需要 `override` 修饰符
