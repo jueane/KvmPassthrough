@@ -1,7 +1,7 @@
 #!/bin/bash
 
 useColors=true
-usePager=true
+usePager=false
 
 usage() {
 	echo "\
