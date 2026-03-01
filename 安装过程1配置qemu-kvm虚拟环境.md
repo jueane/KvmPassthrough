@@ -48,26 +48,33 @@ systemctl enable --now virtlogd.socket
 
 # 创建网桥
 在路径/etc/systemd/network中创建文件：
+```shell
 10-bridge.netdev
 20-bridge.network
 30-br0-static.network
+```
 
->>>10-bridge.netdev 内容：
+>10-bridge.netdev 内容：
+```
 [NetDev]
 Name=br0
 Kind=bridge
+```
 
->>> 20-bridge.network (注意改网卡名字)
+> 20-bridge.network (注意改网卡名字)
+```
 [Match]
 Name=enp6s0
 [Network]
 Bridge=br0
+```
 
->>> 30-br0-static.network (注意改网段)
+> 30-br0-static.network (注意改网段)
+```conf
 [Match]
 Name=br0
 [Network]
 Address=192.168.20.70/24
 Gateway=192.168.20.10
 DNS=192.168.20.10
-
+```
