@@ -1,5 +1,12 @@
 # KVM/QEMU GPU Passthrough Hooks
 
+Hook安装方法：
+```
+ln -s /jdata/develop/KvmPassthrough/10.hooks/src/qemu.ts /etc/libvirt/hooks/qemu
+```
+
+
+
 这是一个用于 KVM/QEMU 虚拟机的 libvirt hooks 系统，实现 GPU 直通 (GPU Passthrough) 的自动化管理。当虚拟机启动/停止时，自动执行 GPU 绑定/解绑操作，使宿主机的 GPU 可以被虚拟机独占使用。
 
 ## 项目概述
