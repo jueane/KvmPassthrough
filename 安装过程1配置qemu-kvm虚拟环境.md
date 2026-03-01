@@ -33,6 +33,15 @@ options vfio-pci disable_vga=1
 pacman -S qemu-full libvirt virt-manager dnsmasq iptables-nft edk2-ovmf
 (提示移除iptables选是)
 
+# 配置libvirt权限
+vim /etc/libvirt/qemu.conf
+修改:
+user = "root"
+
+把自己添加到libvirt组里面(如果是非root用户）：
+usermod -a -G libvirt-qemu je
+
+
 # 自动启动服务 libvirtd virtlogd.socket
 systemctl enable --now libvirtd
 systemctl enable --now virtlogd.socket
