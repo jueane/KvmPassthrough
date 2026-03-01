@@ -4,10 +4,10 @@ libvirt钩子配置：
 ```shell
 [root@h /etc/libvirt/hooks]# l
 total 4.0K
-lrwxrwxrwx 1 root root 43 Sep  2  2023 qemu -> /jdata/develop/KvmPassthrough/10.hooks/qemu
+lrwxrwxrwx 1 root root 43 Sep  2  2023 qemu -> /jdata/develop/LibvirtHooks/src/qemu.ts
 ```
 
-`/jdata/develop/KvmPassthrough/10.hooks/qemu`
+`/jdata/develop/LibvirtHooks/src/qemu.ts`
 ```shell
 #!/bin/bash
 
@@ -28,5 +28,4 @@ echo "Command: $command" >> /var/log/libvirt/hooks.log
 eval "$command" >> /var/log/libvirt/hooks.log 2>&1 # 将输出写入日志文件
 echo "" >> /var/log/libvirt/hooks.log
 ```
-
 

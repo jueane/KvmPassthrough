@@ -26,7 +26,7 @@
 - **当前运行VM**: 2台 (openwrtimt, win10)
 - **已定义VM总数**: 12台
 - **存储位置**: `/jdata/vdisk/`
-- **配置仓库**: `/jdata/develop/KvmPassthrough/` (Git管理)
+- **配置仓库**: `/jdata/develop/LibvirtHooks/` (Git管理)
 
 ### 硬件环境
 - **CPU**: Intel (支持VMX硬件虚拟化)
@@ -71,7 +71,7 @@
 └── 10-kvm-hugepages.conf        # 大页面配置
 
 /etc/libvirt/hooks/
-└── qemu -> /jdata/develop/KvmPassthrough/10.hooks/qemu.py
+└── qemu -> /jdata/develop/LibvirtHooks/src/qemu.ts
 ```
 
 ---
@@ -241,7 +241,7 @@ br0: 10.0.0.2/24
 ## 自定义Hook系统
 
 ### Hook主程序
-**位置**: `/jdata/develop/KvmPassthrough/10.hooks/qemu.py`
+**位置**: `/jdata/develop/LibvirtHooks/src/qemu.ts`
 
 ### Hook功能
 - **事件监听**: 监听VM启动/停止事件
@@ -407,7 +407,7 @@ qemu-img convert -f qcow2 -O qcow2 source.qcow2 dest.qcow2
 - **VFIO文档**: https://vfio.blogspot.com/
 
 ### 配置模板
-所有自定义配置模板存储在: `/jdata/develop/KvmPassthrough/`
+所有自定义配置模板存储在: `/jdata/develop/LibvirtHooks/`
 
 ---
 

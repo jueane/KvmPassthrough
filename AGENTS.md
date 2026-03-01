@@ -7,7 +7,6 @@ This repository is organized by KVM passthrough setup stages. Main folders are:
 - `3.libvirt/`: libvirt configuration notes.
 - `4.bridge_network/`: bridge network setup scripts and XML.
 - `99.sound/`: host sound helper scripts.
-- `10.hooks/`: Bun + TypeScript libvirt hook implementation (`src/qemu.ts`, `vfio-startup.sh`, `vfio-teardown.sh`).
 - `CreateVMInCommandline/`: VM XML templates.
 - Process notes: `安装过程*.md`, troubleshooting in `解决问题/` and `避坑记录/`.
 
@@ -16,21 +15,13 @@ Most root-level content is scripts/docs; run scripts directly as needed:
 - `bash 1.iommu/2.CheckIommuGroup.sh`: print IOMMU groups.
 - `bash 99.sound/1.getCardNames.sh`: inspect audio devices.
 
-For `10.hooks/` development:
-- `cd 10.hooks && bun install`: install Bun dependencies.
-- `cd 10.hooks && bunx tsc --noEmit`: strict type check.
-- `cd 10.hooks && bun src/qemu.ts win11 prepare/begin`: simulate pre-start hook.
-- `cd 10.hooks && bun src/qemu.ts win11 release/end`: simulate post-stop hook.
-
 ## Coding Style & Naming Conventions
 - Keep staged folder naming pattern: `<number>.<topic>`.
 - Shell scripts should keep executable shebangs and descriptive lowercase names.
-- TypeScript in `10.hooks/src` should follow existing style: 2-space indentation, semicolons, explicit types where useful, and compatibility with strict `tsconfig.json`.
 - Isolate host-specific values (PCI IDs, VM names) and document edits near changed lines.
 
 ## Testing Guidelines
 - No global automated CI exists at repository root.
-- Minimum gate for `10.hooks`: `bunx tsc --noEmit`.
 - Validate passthrough behavior manually on a non-production host:
   1. Start/stop VM with `virsh`.
   2. Verify module/device state via `lsmod` and `virsh nodedev-list --tree`.
