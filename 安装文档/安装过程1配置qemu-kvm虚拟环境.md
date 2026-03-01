@@ -24,10 +24,19 @@ DMAR: IOMMU enabled
 创建文件：
 /etc/modprobe.d/vfio.conf
 添加显卡的id：
+```
 options vfio-pci ids=10de:2503,10de:228e
 options vfio-pci disable_idle_d3=1
 options vfio-pci disable_vga=1
+```
+创建文件：
+/etc/modprobe.d/kvm.conf
+```
+options kvm ignore_msrs=1
+options kvm report_ignored_msrs=0
+```
 (需要重启)
+
 
 # 安装虚拟机软件
 pacman -S qemu-full libvirt virt-manager dnsmasq iptables-nft edk2-ovmf
