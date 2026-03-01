@@ -76,7 +76,7 @@ while getopts cCpPh opt; do
 	esac
 done
 
-iommuGroups=$(find '/sys/kernel/iommu_groups/' -maxdepth 1 -mindepth 1 -type d)
+iommuGroups=$(find '/sys/kernel/iommu_groups/' -maxdepth 1 -mindepth 1 -type d | sort -V)
 
 if [ -z "$iommuGroups" ]; then
 	echo "No IOMMU groups found. Are you sure IOMMU is enabled?"
